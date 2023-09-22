@@ -23,7 +23,7 @@ const Welcome = ({ navigation }) => {
       <View style={{ flex: 5 }}>
         <ActionButton
           label={"Join Us"}
-          handleActionButton={() => navigation.navigate("Login")}
+          handleActionButton={() => navigation.navigate("SignUp")}
         />
       </View>
     </ImageBackground>

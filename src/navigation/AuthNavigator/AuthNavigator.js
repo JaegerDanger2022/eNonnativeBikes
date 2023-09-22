@@ -1,6 +1,6 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import Welcome from "../../screens/Welcome";
-import Login from "../../screens/Login";
+import SignUp from "../../screens/SignUp";
 
 const AuthStack = createStackNavigator();
 export default function AuthNavigator() {
@@ -12,8 +12,8 @@ export default function AuthNavigator() {
         options={{ headerShown: false }}
       />
       <AuthStack.Screen
-        name="Login"
-        component={Login}
+        name="SignUp"
+        component={SignUp}
         options={{ headerShown: false }}
       />
     </AuthStack.Navigator>
