@@ -4,7 +4,7 @@ import ActionButton from "../components/ActionButton";
 import { Avatar } from "react-native-paper";
 import { globalStyles } from "../constants/styles/global";
 
-const Welcome = () => {
+const Welcome = ({ navigation }) => {
   return (
     <ImageBackground
       source={require("../../assets/images/welcomeImage.jpg")}
@@ -21,7 +21,10 @@ const Welcome = () => {
       </View>
 
       <View style={{ flex: 5 }}>
-        <ActionButton label={"Join Us"} />
+        <ActionButton
+          label={"Join Us"}
+          handleActionButton={() => navigation.navigate("Login")}
+        />
       </View>
     </ImageBackground>
   );
