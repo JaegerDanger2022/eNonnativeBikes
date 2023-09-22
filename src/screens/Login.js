@@ -95,7 +95,7 @@ const Login = () => {
         </View>
         {/* Social Logins */}
         {/* Google */}
-        <Avatar.Image size={24} source={require("../assets/avatar.png")} />
+        {/* <Avatar.Image size={24} source={require("../assets/avatar.png")} /> */}
       </View>
     </SafeAreaView>
   );
