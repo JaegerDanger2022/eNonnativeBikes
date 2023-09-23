@@ -14,6 +14,7 @@ import {
   Lexend_800ExtraBold,
   Lexend_900Black,
 } from "@expo-google-fonts/lexend";
+import "react-native-gesture-handler";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -27,17 +28,17 @@ export default function App() {
     Lexend_800ExtraBold,
     Lexend_900Black,
   });
-  //
-  // if (fontsLoaded) {
-  //   return (
-  //     <PaperProvider theme={lightTheme}>
-  //       <RootNavigator />
-  //     </PaperProvider>
-  //   );
-  // }
-  return (
-    <PaperProvider theme={lightTheme}>
-      <RootNavigator />
-    </PaperProvider>
-  );
+
+  if (fontsLoaded) {
+    return (
+      <PaperProvider theme={lightTheme}>
+        <RootNavigator />
+      </PaperProvider>
+    );
+  }
+  // return (
+  //   <PaperProvider theme={lightTheme}>
+  //     <RootNavigator />
+  //   </PaperProvider>
+  // );
 }

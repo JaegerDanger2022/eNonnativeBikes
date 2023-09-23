@@ -9,7 +9,7 @@ import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CustomTextInput from "../components/CustomTextInput";
 import ActionButton from "../components/ActionButton";
-import { Avatar, Divider } from "react-native-paper";
+import { Avatar, Button, Divider, useTheme } from "react-native-paper";
 import CustomCheckBox from "../components/CustomCheckBox";
 
 const SignUp = ({ navigation }) => {
@@ -19,9 +19,10 @@ const SignUp = ({ navigation }) => {
   const [password, setPassword] = useState("");
   //   checkbox state
   const [checked, setChecked] = useState(false);
-
+  // theme
+  const theme = useTheme();
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ backgroundColor: theme.colors.background, flex: 1 }}>
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <View style={{ paddingLeft: 10 }}>
           {/* titles */}
@@ -30,15 +31,49 @@ const SignUp = ({ navigation }) => {
               paddingLeft: 10,
               paddingBottom: 15,
               gap: 15,
-              marginBottom: 10,
             }}
           >
-            <Text style={{ fontSize: 50, fontFamily: "Lexend_300Light" }}>
+            <Text style={{ fontSize: 30, fontFamily: "Lexend_300Light" }}>
               Create Account
             </Text>
             <Text style={{ fontSize: 20, fontFamily: "Lexend_400Regular" }}>
               Sign up to get started!
             </Text>
+          </View>
+          {/* Social Logins */}
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "center",
+              gap: 50,
+              marginVertical: 10,
+            }}
+          >
+            {/* Google */}
+            <TouchableOpacity onPress={() => console.log("first")}>
+              <Avatar.Image
+                style={{ backgroundColor: "transparent" }}
+                size={50}
+                source={require("../../assets/images/socialmedialogos/google.png")}
+              />
+            </TouchableOpacity>
+            {/* Facebook */}
+            <TouchableOpacity>
+              <Avatar.Image
+                style={{ backgroundColor: "transparent" }}
+                size={50}
+                source={require("../../assets/images/socialmedialogos/facebook.png")}
+              />
+            </TouchableOpacity>
+
+            {/* apple */}
+            <TouchableOpacity>
+              <Avatar.Image
+                style={{ backgroundColor: "transparent" }}
+                size={50}
+                source={require("../../assets/images/socialmedialogos/apple.png")}
+              />
+            </TouchableOpacity>
           </View>
           {/* input fields */}
           <View style={{ gap: 30, alignItems: "center" }}>
@@ -71,8 +106,8 @@ const SignUp = ({ navigation }) => {
           <View
             style={{
               paddingVertical: 10,
-              paddingHorizontal: 10,
-              width: 380,
+              paddingHorizontal: 25,
+              width: 370,
               flexDirection: "row",
               alignItems: "center",
             }}
@@ -104,7 +139,7 @@ const SignUp = ({ navigation }) => {
           </View>
 
           {/* divider */}
-          <View
+          {/* <View
             style={{
               flexDirection: "row",
               justifyContent: "center",
@@ -123,40 +158,30 @@ const SignUp = ({ navigation }) => {
               Or sign up with
             </Text>
             <Divider bold style={{ width: 100 }} />
-          </View>
-          {/* Social Logins */}
+          </View> */}
+          {/* Login */}
           <View
             style={{
+              paddingVertical: 10,
+              paddingHorizontal: 10,
+              width: 380,
               flexDirection: "row",
+              alignItems: "center",
               justifyContent: "center",
-              gap: 50,
             }}
           >
-            {/* Google */}
-            <TouchableOpacity onPress={() => console.log("first")}>
-              <Avatar.Image
-                style={{ backgroundColor: "transparent" }}
-                size={50}
-                source={require("../../assets/images/socialmedialogos/google.png")}
-              />
-            </TouchableOpacity>
-            {/* Facebook */}
-            <TouchableOpacity>
-              <Avatar.Image
-                style={{ backgroundColor: "transparent" }}
-                size={50}
-                source={require("../../assets/images/socialmedialogos/facebook.png")}
-              />
-            </TouchableOpacity>
-
-            {/* apple */}
-            <TouchableOpacity>
-              <Avatar.Image
-                style={{ backgroundColor: "transparent" }}
-                size={50}
-                source={require("../../assets/images/socialmedialogos/apple.png")}
-              />
-            </TouchableOpacity>
+            <Text
+              style={{
+                fontSize: 15,
+                fontFamily: "Lexend_300Light",
+                paddingLeft: 5,
+              }}
+            >
+              Already have anaccount?
+              <View>
+                <Text>Login</Text>
+              </View>
+            </Text>
           </View>
         </View>
       </TouchableWithoutFeedback>

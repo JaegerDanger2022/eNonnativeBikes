@@ -8,7 +8,7 @@ const CustomTextInput = ({ label, value, textInputOnchange }) => {
       label={label}
       value={value}
       onChangeText={textInputOnchange}
-      style={{ width: 380 }}
+      style={{ width: 350 }}
     />
   );
 };

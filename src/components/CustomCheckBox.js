@@ -18,8 +18,8 @@ export default CustomCheckBox;
 const styles = StyleSheet.create({
   check: {
     width: 35,
-    // borderColor: "#00899B",
-    // borderWidth: 1,
-    // borderRadius: 5,
+    borderColor: "#00899B",
+    borderWidth: 1,
+    borderRadius: 5,
   },
 });
