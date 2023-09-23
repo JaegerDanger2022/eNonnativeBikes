@@ -12,7 +12,7 @@ import ActionButton from "../components/ActionButton";
 import { Avatar, Divider } from "react-native-paper";
 import CustomCheckBox from "../components/CustomCheckBox";
 
-const SignUp = () => {
+const SignUp = ({ navigation }) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -25,7 +25,14 @@ const SignUp = () => {
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <View style={{ paddingLeft: 10 }}>
           {/* titles */}
-          <View style={{ paddingLeft: 10, paddingBottom: 15 }}>
+          <View
+            style={{
+              paddingLeft: 10,
+              paddingBottom: 15,
+              gap: 15,
+              marginBottom: 10,
+            }}
+          >
             <Text style={{ fontSize: 50, fontFamily: "Lexend_300Light" }}>
               Create Account
             </Text>
@@ -92,8 +99,10 @@ const SignUp = () => {
               label={"Create Account"}
               buttonStyle={{ width: 300, borderRadius: 10, paddingVertical: 5 }}
               labelStyle={{ fontSize: 20, fontFamily: " Lexend_200ExtraLight" }}
+              handleActionButton={() => navigation.navigate("Home")}
             />
           </View>
+
           {/* divider */}
           <View
             style={{
@@ -124,7 +133,7 @@ const SignUp = () => {
             }}
           >
             {/* Google */}
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => console.log("first")}>
               <Avatar.Image
                 style={{ backgroundColor: "transparent" }}
                 size={50}
