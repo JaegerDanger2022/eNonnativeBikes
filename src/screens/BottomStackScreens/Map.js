@@ -1,6 +1,7 @@
 import { View, Text, SafeAreaView, Pressable, TextInput } from "react-native";
 import React, { useEffect, useState } from "react";
 import CustomMap from "../../components/MapComponents/CustomMap";
+ 
 import { Feather, Ionicons } from "@expo/vector-icons";
 
 const Map = ({ navigation }) => {
@@ -26,6 +27,10 @@ const Map = ({ navigation }) => {
     };
   }, [searchVisible]);
 
+ 
+
+const Map = ({ navigation }) => {
+ 
   return (
     <View style={{ flex: 1 }}>
       <View style={{ flex: 1 }}>
