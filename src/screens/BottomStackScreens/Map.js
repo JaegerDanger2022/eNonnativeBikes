@@ -1,10 +1,12 @@
 import { View, Text, SafeAreaView, Pressable, TextInput } from "react-native";
 import React, { useEffect, useState } from "react";
 import CustomMap from "../../components/MapComponents/CustomMap";
- 
 import { Feather, Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+import { DrawerActions } from "@react-navigation/native"; // Import DrawerActions
 
-const Map = ({ navigation }) => {
+const Map = () => {
+  const navigation = useNavigation();
   const [searchVisible, setSearchVisible] = useState(false);
 
   const toggleSearch = () => {
@@ -27,10 +29,10 @@ const Map = ({ navigation }) => {
     };
   }, [searchVisible]);
 
- 
+  const openDrawer = () => {
+    navigation.dispatch(DrawerActions.openDrawer()); // Use dispatch to open the drawer
+  };
 
-const Map = ({ navigation }) => {
- 
   return (
     <View style={{ flex: 1 }}>
       <View style={{ flex: 1 }}>
@@ -77,7 +79,7 @@ const Map = ({ navigation }) => {
           </View>
           <View style={{ flexDirection: "column", gap: 10 }}>
             <View>
-              <Pressable onPress={() => navigation.openDrawer()}>
+              <Pressable onPress={openDrawer}>
                 <Ionicons name="menu-sharp" size={40} color="black" />
               </Pressable>
             </View>

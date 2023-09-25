@@ -78,7 +78,7 @@ const CustomMap = () => {
   };
 
   const onRegionChange = (region) => {
-    console.log(region);
+    // console.log(region);
   };
 
   return (
