@@ -1,6 +1,7 @@
 import { View, Text, SafeAreaView, Pressable, TextInput } from "react-native";
 import React, { useEffect, useState } from "react";
 import CustomMap from "../../components/MapComponents/CustomMap";
+
 import { Feather, Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { DrawerActions } from "@react-navigation/native"; // Import DrawerActions
@@ -32,6 +33,10 @@ const Map = () => {
   const openDrawer = () => {
     navigation.dispatch(DrawerActions.openDrawer()); // Use dispatch to open the drawer
   };
+
+
+const Map = ({ navigation }) => {
+  
 
   return (
     <View style={{ flex: 1 }}>
