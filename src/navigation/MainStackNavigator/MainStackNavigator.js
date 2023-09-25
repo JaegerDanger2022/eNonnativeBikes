@@ -1,5 +1,4 @@
-import { createStackNavigator } from "@react-navigation/stack";
-import Home from "../../screens/MainStackScreens/Map";
+import { createStackNavigator } from "@react-navigation/stack"; 
 import SideDrawer from "../SideDrawer/SideDrawer";
 
 const MainStack = createStackNavigator();
