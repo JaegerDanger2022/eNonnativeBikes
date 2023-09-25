@@ -1,7 +1,5 @@
 import "react-native-gesture-handler";
 import RootNavigator from "./src/navigation/RootNavigator/RootNavigator";
-import { PaperProvider } from "react-native-paper";
-import { lightTheme } from "./src/constants/lightTheme";
 import {
   useFonts,
   Lexend_100Thin,
@@ -15,6 +13,12 @@ import {
   Lexend_900Black,
 } from "@expo-google-fonts/lexend";
 import "react-native-gesture-handler";
+import { store } from "./app/utils/redux/store/store";
+import { Provider } from "react-redux";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+// redux
+ 
+
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -31,9 +35,11 @@ export default function App() {
 
   if (fontsLoaded) {
     return (
-      <PaperProvider theme={lightTheme}>
-        <RootNavigator />
-      </PaperProvider>
+     <Provider store={store}>
+       <SafeAreaProvider style={{ flex: 1 }}>
+       <RootNavigator />
+       </SafeAreaProvider> 
+     </Provider>
     );
   }
   // return (
