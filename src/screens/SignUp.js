@@ -4,23 +4,85 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   TouchableOpacity,
+  Alert,
+  ActivityIndicator,
 } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CustomTextInput from "../components/CustomTextInput";
 import ActionButton from "../components/ActionButton";
-import { Avatar, Button, Divider, useTheme } from "react-native-paper";
-import CustomCheckBox from "../components/CustomCheckBox";
+import { Avatar, useTheme } from "react-native-paper";
+import CustomCheckBox from "../components/CustomCheckBox"; 
+import { validateEmail, validatePassword } from "../../app/utils/validation/validation";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { setLogin } from "../../app/utils/redux/features/currentUserSlice";
+import { auth, db } from "../../app/utils/firebaseConfig";
+import { doc, setDoc, getDoc } from "@firebase/firestore";
+import { useDispatch } from "react-redux";
+import { setEmail } from "../../app/utils/redux/features/userProfileSlice";
+import GoogleSignInButton from "../components/AuthFlow/GoogleSignIn";
 
 const SignUp = ({ navigation }) => {
+  // redux dispatch
+  const dispatch = useDispatch()
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
+  const [email, setUserEmail] = useState("");
   const [password, setPassword] = useState("");
+  // loadinfg indicator state
+  const [isLoading, setIsLoading] = useState(false)
   //   checkbox state
   const [checked, setChecked] = useState(false);
   // theme
   const theme = useTheme();
+
+  const handleEmailAuth = async () => {
+    // set isLoading to true
+    setIsLoading(true)
+      const errorEmail = validateEmail(email);
+      const errorPassword = validatePassword(password);
+      // trigger warning onpress of sign up if email and password validation fails
+      if (errorEmail || errorPassword || name == '' || email ==='' || phone === ''|| password === '' ) {
+        Alert.alert(errorEmail, errorPassword);
+            // set isLoading to true
+    setIsLoading(false)
+      } else {
+        try {
+        
+          createUserWithEmailAndPassword(auth, email, password)
+            .then(async (userCredential) => {
+              const user = userCredential.user;
+              dispatch(setLogin(user.uid));
+              // update the database
+              const userRef = doc(db, "users", user.uid);
+              await setDoc(userRef, {
+                name: name,
+                phone:phone,
+                email: email, 
+              });
+      
+              // update email to redux store
+              await dispatch(setEmail(email));
+              // update login 
+              await dispatch(setLogin(user.uid))
+            })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              if (errorCode === "auth/email-already-in-use") {
+                Alert.alert("Email already in use");
+                setLoading(false);
+              }
+              console.error(
+                `errorCode:, ${errorCode}, errorMessage:${errorMessage}`
+              );
+            });
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    
+  };
   return (
     <SafeAreaView style={{ backgroundColor: theme.colors.background, flex: 1 }}>
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -49,14 +111,9 @@ const SignUp = ({ navigation }) => {
               marginVertical: 10,
             }}
           >
+        
             {/* Google */}
-            <TouchableOpacity onPress={() => console.log("first")}>
-              <Avatar.Image
-                style={{ backgroundColor: "transparent" }}
-                size={50}
-                source={require("../../assets/images/socialmedialogos/google.png")}
-              />
-            </TouchableOpacity>
+            <GoogleSignInButton/>
             {/* Facebook */}
             <TouchableOpacity>
               <Avatar.Image
@@ -93,7 +150,7 @@ const SignUp = ({ navigation }) => {
             <CustomTextInput
               label={"Email"}
               value={email}
-              textInputOnchange={(text) => setEmail(text)}
+              textInputOnchange={(text) => setUserEmail(text)}
             />
             {/* password */}
             <CustomTextInput
@@ -130,35 +187,15 @@ const SignUp = ({ navigation }) => {
           </View>
           {/* button */}
           <View style={{ alignItems: "center", paddingTop: 20 }}>
-            <ActionButton
+           {isLoading ? <ActivityIndicator/> :  <ActionButton
               label={"Create Account"}
               buttonStyle={{ width: 300, borderRadius: 10, paddingVertical: 5 }}
-              labelStyle={{ fontSize: 20, fontFamily: " Lexend_200ExtraLight" }}
-              handleActionButton={() => navigation.navigate("Home")}
-            />
+              labelStyle={{ fontSize: 20, fontFamily: "Lexend_200ExtraLight" }}
+              handleActionButton={handleEmailAuth}
+            />}
           </View>
 
-          {/* divider */}
-          {/* <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
-              paddingVertical: 40,
-            }}
-          >
-            <Divider bold style={{ width: 100 }} />
-            <Text
-              style={{
-                marginHorizontal: 15,
-                fontSize: 20,
-                fontFamily: " Lexend_100Thin",
-              }}
-            >
-              Or sign up with
-            </Text>
-            <Divider bold style={{ width: 100 }} />
-          </View> */}
+     
           {/* Login */}
           <View
             style={{
@@ -178,6 +215,7 @@ const SignUp = ({ navigation }) => {
               }}
             >
               Already have anaccount?
+             
               <View>
                 <Text>Login</Text>
               </View>
