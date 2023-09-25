@@ -3,10 +3,11 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useTheme } from "react-native-paper";
-import Map from "../../screens/MainStackScreens/Map";
-import Rides from "../../screens/MainStackScreens/Rides";
-import Settings from "../../screens/MainStackScreens/Settings";
-import Wallet from "../../screens/MainStackScreens/Wallet";
+import Map from "../../screens/BottomStackScreens/Map"; 
+import Settings from "../../screens/BottomStackScreens/Settings";
+import Wallet from "../../screens/BottomStackScreens/Wallet"; 
+import Rides from "../../screens/BottomStackScreens/Rides";
+import RidesNavigator from "../RidesNavigator/RidesNavigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -48,9 +49,10 @@ export default function BottomTabNavigator({ navigation, route }) {
           }}
         />
         <Tab.Screen
-          name="Rides"
-          component={Rides}
+          name="RidesNavigator"
+          component={RidesNavigator}
           options={{
+            headerShown:false,
             tabBarIcon: ({ focused }) => (
               <MaterialCommunityIcons
                 name={focused ? "bicycle" : "bicycle"}
