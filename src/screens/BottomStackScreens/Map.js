@@ -33,11 +33,6 @@ const Map = () => {
   const openDrawer = () => {
     navigation.dispatch(DrawerActions.openDrawer()); // Use dispatch to open the drawer
   };
-
-
-const Map = ({ navigation }) => {
-  
-
   return (
     <View style={{ flex: 1 }}>
       <View style={{ flex: 1 }}>
@@ -98,6 +93,7 @@ const Map = ({ navigation }) => {
       </View>
     </View>
   );
-};
+
+}
 
 export default Map;
