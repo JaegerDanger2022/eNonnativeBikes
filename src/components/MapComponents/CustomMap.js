@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MapView from "react-native-maps";
-import { StyleSheet, View, Image } from "react-native";
+import { StyleSheet, View, Image, Dimensions } from "react-native";
 import { Marker } from "react-native-maps";
 import { FAB, Portal, Provider } from "react-native-paper";
 
@@ -11,8 +11,8 @@ const CustomMap = () => {
   const [mapRegion, setMapRegion] = useState({
     latitude: 7.732645028326621,
     longitude: -0.95566151663661,
-    latitudeDelta: 8.985738526246607,
-    longitudeDelta: 4.520091153681278,
+    latitudeDelta: 4.99,
+    longitudeDelta: 4.99,
   });
 
   const onStateChange = ({ open }) => setState({ open });
@@ -44,16 +44,6 @@ const CustomMap = () => {
       },
       description: "Available",
     },
-    {
-      title: "Lashibi",
-      location: {
-        latitude: 5.644207823571849,
-        latitudeDelta: 0.824733093311405,
-        longitude: -0.01858402043581009,
-        longitudeDelta: 0.4489883780479431,
-      },
-      description: "Available",
-    },
   ];
 
   const showLocationOfInterest = () => {
@@ -73,17 +63,22 @@ const CustomMap = () => {
   };
 
   const handleMarkerPress = (location) => {
+    // Zoom in to the selected location and adjust the delta values based on screen size
+    const screenAspectRation =
+      Dimensions.get("window").width / Dimensions.get("window").height;
+    const latitudeDelta = 0.5; // You can adjust this value as needed
+    const longitudeDelta = latitudeDelta * screenAspectRation;
+
     setMapRegion({
       latitude: location.latitude,
       longitude: location.longitude,
-      latitudeDelta: 1.999,
-      longitudeDelta: 1.999,
+      latitudeDelta,
+      longitudeDelta,
     });
   };
 
   const onRegionChange = (region) => {
     console.log(region);
-    // You can also update the mapRegion state here if needed
   };
 
   return (
@@ -91,7 +86,7 @@ const CustomMap = () => {
       <Provider>
         <MapView
           style={styles.map}
-          region={mapRegion} // Set the map region from state
+          region={mapRegion}
           onRegionChange={onRegionChange}
         >
           <Portal>
@@ -137,8 +132,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   map: {
-    width: "100%",
-    height: "100%",
+    width: Dimensions.get("window").width, // Set map width to screen width
+    height: Dimensions.get("window").height, // Set map height to screen height
   },
 });
 
