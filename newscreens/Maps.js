@@ -81,7 +81,7 @@ const Maps = () => {
   }, []);
 
   const onRegionChange = (region) => {
-    console.log(region);
+    // console.log(region);
   };
 
   const showLocationOfInterest = () => {

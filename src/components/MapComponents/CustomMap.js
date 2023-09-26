@@ -77,7 +77,7 @@ const CustomMap = () => {
   };
 
   const onRegionChange = (region) => {
-    console.log(region);
+    // console.log(region);
   };
 
   const searchLocation = () => {
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
   },
   map: {
     width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height - 200,
+    height: Dimensions.get("window").height - 100,
   },
   searchBar: {
     height: 40,

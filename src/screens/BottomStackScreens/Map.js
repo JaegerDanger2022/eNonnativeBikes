@@ -1,11 +1,18 @@
 import { View, Text, SafeAreaView, Pressable, TextInput } from "react-native";
 import React, { useEffect, useState } from "react";
 import CustomMap from "../../components/MapComponents/CustomMap";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+
 import { Feather, Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+import { DrawerActions } from "@react-navigation/native"; // Import DrawerActions
 
-const Map = ({ navigation }) => {
+const Map = () => {
+  const navigation = useNavigation();
   const [searchVisible, setSearchVisible] = useState(false);
+  const [searchText, setSearchText] = useState("");
 
+  const [search, setSearch] = useState("");
   const toggleSearch = () => {
     setSearchVisible(!searchVisible);
   };
@@ -26,9 +33,35 @@ const Map = ({ navigation }) => {
     };
   }, [searchVisible]);
 
-  const [input, setInput] = useState("");
-  console.log(input);
+  const openDrawer = () => {
+    navigation.dispatch(DrawerActions.openDrawer()); // Use dispatch to open the drawer
+  };
 
+  // ==================================
+  //   const handleMarkerPress = (location) => {
+  //     const screenAspectRatio =
+  //       Dimensions.get("window").width / Dimensions.get("window").height;
+  //     const latitudeDelta = 5.0;
+  //     const longitudeDelta = latitudeDelta * screenAspectRatio;
+
+  //     setMapRegion({
+  //       latitude: location.latitude,
+  //       longitude: location.longitude,
+  //       latitudeDelta,
+  //       longitudeDelta,
+  //     });
+  //   };
+
+  // const searchLocation = () => {
+  //   const foundLocation = locationOfInterest.find(
+  //     (location) => location.title.toLowerCase() === searchText.toLowerCase()
+  //   );
+
+  //   if (foundLocation) {
+  //     handleMarkerPress(foundLocation.location);
+  //   }
+  // };
+  // ==================================
   return (
     <View style={{ flex: 1 }}>
       <View style={{ flex: 1 }}>
@@ -62,8 +95,8 @@ const Map = ({ navigation }) => {
               >
                 <Feather name="search" size={20} color="black" />
                 <TextInput
-                  value={input}
-                  onChangeText={(text) => setInput(text)}
+                  value={search}
+                  onChangeText={(text) => setSearch(text)}
                   placeholder="search"
                   style={{
                     fontSize: 15,
@@ -77,13 +110,21 @@ const Map = ({ navigation }) => {
           </View>
           <View style={{ flexDirection: "column", gap: 10 }}>
             <View>
-              <Pressable onPress={() => navigation.openDrawer()}>
-                <Ionicons name="menu-sharp" size={40} color="black" />
+              <Pressable onPress={openDrawer}>
+                <MaterialCommunityIcons
+                  name="microsoft-xbox-controller-menu"
+                  size={40}
+                  color="black"
+                />
               </Pressable>
             </View>
             <View>
               <Pressable onPress={toggleSearch}>
-                <Ionicons name="md-search-sharp" size={40} color="black" />
+                <Ionicons
+                  name="md-search-circle-sharp"
+                  size={40}
+                  color="black"
+                />
               </Pressable>
             </View>
           </View>

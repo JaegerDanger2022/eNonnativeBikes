@@ -6,7 +6,11 @@ const Drawer = createDrawerNavigator();
 export default function SideDrawer() {
   return (
     <Drawer.Navigator>
-      <Drawer.Screen name="Bottom" component={BottomTabNavigator} />
+      <Drawer.Screen
+        name="Bottoms"
+        component={BottomTabNavigator}
+        options={{ headerShown: false }}
+      />
     </Drawer.Navigator>
   );
 }
