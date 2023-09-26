@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import MapView from "react-native-maps";
-import { StyleSheet, View, Image, Dimensions } from "react-native";
+import { StyleSheet, View, Image, Dimensions, TextInput } from "react-native";
 import { Marker } from "react-native-maps";
 import { FAB, Portal, Provider } from "react-native-paper";
-
 const bikeIcon = require("../../../assets/images/bike/bicycle_5717145.png");
 
 const CustomMap = () => {
@@ -11,9 +10,10 @@ const CustomMap = () => {
   const [mapRegion, setMapRegion] = useState({
     latitude: 7.732645028326621,
     longitude: -0.95566151663661,
-    latitudeDelta: 5.0,
-    longitudeDelta: 5.0,
+    latitudeDelta: 5.999,
+    longitudeDelta: 5.999,
   });
+  const [searchText, setSearchText] = useState("");
 
   const onStateChange = ({ open }) => setState({ open });
 
@@ -63,11 +63,10 @@ const CustomMap = () => {
   };
 
   const handleMarkerPress = (location) => {
-    // Zoom in to the selected location and adjust the delta values based on screen size
-    const screenAspectRation =
+    const screenAspectRatio =
       Dimensions.get("window").width / Dimensions.get("window").height;
-    const latitudeDelta = 0.5; // You can adjust this value as needed
-    const longitudeDelta = latitudeDelta * screenAspectRation;
+    const latitudeDelta = 5.0;
+    const longitudeDelta = latitudeDelta * screenAspectRatio;
 
     setMapRegion({
       latitude: location.latitude,
@@ -79,6 +78,16 @@ const CustomMap = () => {
 
   const onRegionChange = (region) => {
     console.log(region);
+  };
+
+  const searchLocation = () => {
+    const foundLocation = locationOfInterest.find(
+      (location) => location.title.toLowerCase() === searchText.toLowerCase()
+    );
+
+    if (foundLocation) {
+      handleMarkerPress(foundLocation.location);
+    }
   };
 
   return (
@@ -115,13 +124,19 @@ const CustomMap = () => {
               onStateChange={onStateChange}
               onPress={() => {
                 if (open) {
-                  // do something if the speed dial is open
                 }
               }}
             />
           </Portal>
           {showLocationOfInterest()}
         </MapView>
+        <TextInput
+          style={styles.searchBar}
+          placeholder="Search location..."
+          value={searchText}
+          onChangeText={(text) => setSearchText(text)}
+          onSubmitEditing={searchLocation}
+        />
       </Provider>
     </View>
   );
@@ -132,8 +147,16 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   map: {
-    width: Dimensions.get("window").width, // Set map width to screen width
-    height: Dimensions.get("window").height, // Set map height to screen height
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height - 200,
+  },
+  searchBar: {
+    height: 40,
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 5,
+    margin: 10,
+    padding: 10,
   },
 });
 

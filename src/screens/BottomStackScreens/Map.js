@@ -26,6 +26,9 @@ const Map = ({ navigation }) => {
     };
   }, [searchVisible]);
 
+  const [input, setInput] = useState("");
+  console.log(input);
+
   return (
     <View style={{ flex: 1 }}>
       <View style={{ flex: 1 }}>
@@ -59,6 +62,8 @@ const Map = ({ navigation }) => {
               >
                 <Feather name="search" size={20} color="black" />
                 <TextInput
+                  value={input}
+                  onChangeText={(text) => setInput(text)}
                   placeholder="search"
                   style={{
                     fontSize: 15,
