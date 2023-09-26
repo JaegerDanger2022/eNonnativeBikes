@@ -11,8 +11,8 @@ const CustomMap = () => {
   const [mapRegion, setMapRegion] = useState({
     latitude: 7.732645028326621,
     longitude: -0.95566151663661,
-    latitudeDelta: 4.99,
-    longitudeDelta: 4.99,
+    latitudeDelta: 4.98,
+    longitudeDelta: 4.98,
   });
 
   const onStateChange = ({ open }) => setState({ open });
