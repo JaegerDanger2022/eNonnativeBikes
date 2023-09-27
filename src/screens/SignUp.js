@@ -177,7 +177,7 @@ const SignUp = ({ navigation }) => {
             />
             <Text
               style={{
-                fontSize: 15,
+                fontSize: 20,
                 fontFamily: "Lexend_300Light",
                 paddingLeft: 5,
               }}
@@ -199,7 +199,7 @@ const SignUp = ({ navigation }) => {
           {/* Login */}
           <View
             style={{
-              paddingVertical: 10,
+              paddingVertical: 15,
               paddingHorizontal: 10,
               width: 380,
               flexDirection: "row",
@@ -209,17 +209,16 @@ const SignUp = ({ navigation }) => {
           >
             <Text
               style={{
-                fontSize: 15,
+                fontSize: 20,
                 fontFamily: "Lexend_300Light",
                 paddingLeft: 5,
               }}
             >
-              Already have anaccount?
-             
-              <View>
-                <Text>Login</Text>
-              </View>
+              Already have anaccount? 
             </Text>
+            <TouchableOpacity style={{paddingHorizontal:10}} onPress={()=>navigation.navigate('Login')}><View>
+                <Text style={{color:theme.colors.primary, fontFamily:'Lexend_500Medium', fontSize: 20}}>Login</Text>
+              </View></TouchableOpacity>
           </View>
         </View>
       </TouchableWithoutFeedback>

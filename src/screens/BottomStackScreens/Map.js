@@ -6,11 +6,15 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Feather, Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { DrawerActions } from "@react-navigation/native"; // Import DrawerActions
+import { Avatar, useTheme } from "react-native-paper";
 
 const Map = () => {
+  const theme = useTheme()
   const navigation = useNavigation();
   const [searchVisible, setSearchVisible] = useState(false);
+
   const [searchText, setSearchText] = useState("");
+
 
   const [search, setSearch] = useState("");
   const toggleSearch = () => {
@@ -95,8 +99,10 @@ const Map = () => {
               >
                 <Feather name="search" size={20} color="black" />
                 <TextInput
+
                   value={search}
                   onChangeText={(text) => setSearch(text)}
+
                   placeholder="search"
                   style={{
                     fontSize: 15,
@@ -111,20 +117,24 @@ const Map = () => {
           <View style={{ flexDirection: "column", gap: 10 }}>
             <View>
               <Pressable onPress={openDrawer}>
+
                 <MaterialCommunityIcons
                   name="microsoft-xbox-controller-menu"
                   size={40}
                   color="black"
                 />
+
               </Pressable>
             </View>
             <View>
               <Pressable onPress={toggleSearch}>
+
                 <Ionicons
                   name="md-search-circle-sharp"
                   size={40}
                   color="black"
                 />
+
               </Pressable>
             </View>
           </View>

@@ -16,11 +16,14 @@ import "react-native-gesture-handler";
 import { store } from "./app/utils/redux/store/store";
 import { Provider } from "react-redux";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { clearAllData } from "./app/utils/AsyncStorage/ClearData";
 // redux
  
 
 
 export default function App() {
+  // clearAllData()
+
   let [fontsLoaded] = useFonts({
     Lexend_100Thin,
     Lexend_200ExtraLight,
