@@ -15,6 +15,7 @@ import Payments from "../../screens/DrawerScreen/Payment";
 import Rides from "../../screens/BottomStackScreens/Rides";
 import Settings from "../../screens/BottomStackScreens/Settings";
 import Accounts from "../../screens/DrawerScreen/Account";
+import PaymentNavigator from "./PaymentNavigator/PaymentNavigator";
 
 
 const Drawer = createDrawerNavigator();
@@ -29,6 +30,7 @@ export default function SideDrawer() {
         drawerStyle: {
           width: 350,
         },
+        drawerType:'front'
       }}
     >
       {/* DRAWER TITLE */}
@@ -50,11 +52,25 @@ export default function SideDrawer() {
       {/* ==================== */}
       {/* DRAWER SCREENS */}
       <Drawer.Screen
+        name="Maps"
+        component={BottomTabNavigator}
+        options={{
+          // drawerLabel: () => <Maps />,
+          headerShown: false,
+          headerLeft: () => (
+            <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
+              <AntDesign name="arrowleft" size={24} color="black" />
+            </TouchableOpacity>
+          ),
+          headerTitle: "",
+        }}
+      />
+      <Drawer.Screen
         name="Payment"
-        component={Payments}
+        component={PaymentNavigator}
         options={{
           drawerLabel: () => (
-            <SideDrawerItems label={"payment"} iconName={"cash"} />
+            <SideDrawerItems label={"Payment"} iconName={"cash"} />
           ),
           headerShown: true,
           headerLeft: () => (
@@ -117,7 +133,7 @@ export default function SideDrawer() {
         component={Settings}
         options={{
           drawerLabel: () => (
-            <SideDrawerItems label={"Settings"} iconName={"setting"} />
+            <SideDrawerItems label={"Settings"}  />
           ),
           headerShown: true,
           headerLeft: () => (
@@ -156,20 +172,7 @@ export default function SideDrawer() {
           headerTitle: "",
         }}
       />
-      <Drawer.Screen
-        name="Maps"
-        component={BottomTabNavigator}
-        options={{
-          // drawerLabel: () => <Maps />,
-          headerShown: false,
-          headerLeft: () => (
-            <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
-              <AntDesign name="arrowleft" size={24} color="black" />
-            </TouchableOpacity>
-          ),
-          headerTitle: "",
-        }}
-      />
+      
       {/* END OF DRAWER SCREENS */}
 
     </Drawer.Navigator>

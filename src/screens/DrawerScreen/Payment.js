@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView } from "react-native";
+import { View, Text, SafeAreaView, TouchableOpacity } from "react-native";
 import React from "react";
 import { Card, Divider } from "react-native-paper";
 import { Fontisto } from "@expo/vector-icons";
@@ -6,7 +6,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 
-const Payments = () => {
+const Payments = ({navigation}) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Card style={{ width: "100%", height: 292 }}>
@@ -18,7 +18,8 @@ const Payments = () => {
             <Card
               style={{ width: "100%", backgroundColor: "#F5F4F2", height: 130 }}
             >
-              <View
+             <TouchableOpacity onPress={()=> navigation.navigate('Rides')}>
+             <View
                 style={{
                   flexDirection: "column",
                   gap: 10,
@@ -35,6 +36,7 @@ const Payments = () => {
                   <Text>Ride Balance is available</Text>
                 </View>
               </View>
+             </TouchableOpacity>
             </Card>
             <View style={{ flexDirection: "row", gap: 20 }}>
               <View>
