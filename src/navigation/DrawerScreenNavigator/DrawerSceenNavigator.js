@@ -10,6 +10,11 @@ export default function MainStackNavigator() {
         component={SideDrawer}
         options={{ headerShown: false }}
       />
+      <MainStack.Screen
+        name="SideDrawer"
+        component={SideDrawer}
+        options={{ headerShown: false }}
+      />
     </DrawerScreen.Navigator>
   );
 }
