@@ -5,6 +5,7 @@ import { useTheme } from "react-native-paper";
 import { StackActions, useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 import { Pressable, View } from "react-native";
+import Login from "../../screens/AuthScreens/Login";
 
 const AuthStack = createStackNavigator();
 export default function AuthNavigator() {
@@ -58,6 +59,11 @@ export default function AuthNavigator() {
         <AuthStack.Screen
           name="SignUp"
           component={SignUp}
+          options={{ headerBackTitle: "", headerTitle: "" }}
+        />
+           <AuthStack.Screen
+          name="Login"
+          component={Login}
           options={{ headerBackTitle: "", headerTitle: "" }}
         />
       </AuthStack.Group>

@@ -5,10 +5,13 @@ import CustomMap from "../../components/MapComponents/CustomMap";
 import { Feather, Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { DrawerActions } from "@react-navigation/native"; // Import DrawerActions
+import { Avatar, useTheme } from "react-native-paper";
 
 const Map = () => {
+  const theme = useTheme()
   const navigation = useNavigation();
   const [searchVisible, setSearchVisible] = useState(false);
+  const [search, setSearch] = useState('')
 
   const toggleSearch = () => {
     setSearchVisible(!searchVisible);
@@ -66,6 +69,8 @@ const Map = () => {
               >
                 <Feather name="search" size={20} color="black" />
                 <TextInput
+                value={search}
+                onChangeText={(text)=> setSearch(text)}
                   placeholder="search"
                   style={{
                     fontSize: 15,
@@ -80,12 +85,13 @@ const Map = () => {
           <View style={{ flexDirection: "column", gap: 10 }}>
             <View>
               <Pressable onPress={openDrawer}>
-                <Ionicons name="menu-sharp" size={40} color="black" />
+              <Avatar.Icon style={{backgroundColor: theme.colors.background}}  size={40} icon={() =>  <Ionicons name="menu-sharp" size={30} color={theme.colors.primary} />} />
               </Pressable>
             </View>
             <View>
               <Pressable onPress={toggleSearch}>
-                <Ionicons name="md-search-sharp" size={40} color="black" />
+               
+                <Avatar.Icon style={{backgroundColor: theme.colors.background}}  size={40} icon={() =>  <Ionicons name="md-search-sharp" size={30} color={theme.colors.primary} />} />
               </Pressable>
             </View>
           </View>
