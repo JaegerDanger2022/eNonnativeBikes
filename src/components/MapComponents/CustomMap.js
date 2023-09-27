@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import MapView from "react-native-maps";
+import MapView, { MAP_TYPES, MapOverlay, Overlay } from "react-native-maps";
 import { StyleSheet, View, Image, Dimensions, TextInput } from "react-native";
 import { Marker } from "react-native-maps";
 import { FAB, Portal, Provider } from "react-native-paper";
@@ -10,7 +10,7 @@ const CustomMap = () => {
   const [mapRegion, setMapRegion] = useState({
     latitude: 7.732645028326621,
     longitude: -0.95566151663661,
-    latitudeDelta: 5.999,
+    latitudeDelta: 6.999,
     longitudeDelta: 5.999,
   });
   const [searchText, setSearchText] = useState("");
@@ -56,7 +56,9 @@ const CustomMap = () => {
           description={item.description}
           onPress={() => handleMarkerPress(item.location)}
         >
-          <Image source={bikeIcon} style={{ width: 30, height: 30 }} />
+          {/* <Overlay style={{ width: 70, height: 70 }} opacity={0.5}> */}
+          <Image source={bikeIcon} style={{ width: 70, height: 70 }} />
+          {/* </Overlay> */}
         </Marker>
       );
     });
@@ -90,54 +92,29 @@ const CustomMap = () => {
     }
   };
 
+  const customMapStyle = [
+    {
+      featureType: "water",
+      elementType: "geometry",
+      stylers: [
+        {
+          color: "#1e1e1e",
+        },
+      ],
+    },
+  ];
+
   return (
     <View style={styles.container}>
-      <Provider>
-        <MapView
-          style={styles.map}
-          region={mapRegion}
-          onRegionChange={onRegionChange}
-        >
-          <Portal>
-            <FAB.Group
-              open={open}
-              visible
-              icon={open ? "calendar-today" : "plus"}
-              actions={[
-                { icon: "plus", onPress: () => console.log("Pressed add") },
-                {
-                  icon: "star",
-                  label: "Star",
-                  onPress: () => console.log("Pressed star"),
-                },
-                {
-                  icon: "email",
-                  label: "Email",
-                  onPress: () => console.log("Pressed email"),
-                },
-                {
-                  icon: "bell",
-                  label: "Remind",
-                  onPress: () => console.log("Pressed notifications"),
-                },
-              ]}
-              onStateChange={onStateChange}
-              onPress={() => {
-                if (open) {
-                }
-              }}
-            />
-          </Portal>
-          {showLocationOfInterest()}
-        </MapView>
-        <TextInput
-          style={styles.searchBar}
-          placeholder="Search location..."
-          value={searchText}
-          onChangeText={(text) => setSearchText(text)}
-          onSubmitEditing={searchLocation}
-        />
-      </Provider>
+      <MapView
+        style={styles.map}
+        region={mapRegion}
+        onRegionChange={onRegionChange}
+        mapType="standard"
+        customMapStyle={customMapStyle}
+      >
+        {showLocationOfInterest()}
+      </MapView>
     </View>
   );
 };
@@ -148,7 +125,7 @@ const styles = StyleSheet.create({
   },
   map: {
     width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height - 100,
+    height: Dimensions.get("window").height,
   },
   searchBar: {
     height: 40,

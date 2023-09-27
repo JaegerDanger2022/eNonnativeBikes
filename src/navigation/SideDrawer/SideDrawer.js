@@ -1,39 +1,59 @@
-import { DrawerItem, createDrawerNavigator } from "@react-navigation/drawer";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import BottomTabNavigator from "../BottomTabsNavigator/BottomTabsNavigator";
+import { AntDesign } from "@expo/vector-icons";
 
 // Drawers Component
-import Payment from "../../screens/DrawerScreen/Payment";
-import Rider from "../../screens/DrawerScreen/Rider";
-import Safety from "../../screens/DrawerScreen/Safety";
-import History from "../../screens/DrawerScreen/History";
-import Discount from "../../screens/DrawerScreen/Discount";
-import Settings from "../../screens/DrawerScreen/Settings";
-import Report from "../../screens/DrawerScreen/Report";
-import Accounting from "../../screens/DrawerScreen/Accounting";
+import Accounting from "../../DrawerScreenComponent/Accounting";
+
+// Drawer Screens
+import PaymentId from "../../screens/DrawerScreen/Payment";
+import { TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import SideDrawerItems from "../../DrawerScreenComponent/SideDrawerItems";
+import Payments from "../../screens/DrawerScreen/Payment";
+import Rides from "../../screens/BottomStackScreens/Rides";
+import Settings from "../../screens/BottomStackScreens/Settings";
 
 const Drawer = createDrawerNavigator();
 
 export default function SideDrawer() {
+  const navigation = useNavigation();
   return (
     <Drawer.Navigator
+      initialRouteName="Maps"
       screenOptions={{
         drawerStyle: {
-          // backgroundColor: "#c6cbef",
-          width: 250,
+          width: 350,
         },
       }}
     >
-      {/* DRAWER TITLE */}
       <Drawer.Screen
-        name="Accout"
+        name="Maps"
         component={BottomTabNavigator}
         options={{
-          // drawerContentStyle:()
-          drawerLabel: () => <Accounting />,
+          // drawerLabel: () => <Maps />,
           headerShown: false,
-          // drawerIcon: ({ color }) => (
-          //   <EvilIcons name="user" size={24} color="black" />
-          // ),
+          headerLeft: () => (
+            <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
+              <AntDesign name="arrowleft" size={24} color="black" />
+            </TouchableOpacity>
+          ),
+          headerTitle: "",
+        }}
+      />
+      {/* DRAWER TITLE */}
+      <Drawer.Screen
+        name="Accouting"
+        component={BottomTabNavigator}
+        options={{
+          drawerLabel: () => <Accounting />,
+          headerShown: true,
+          headerLeft: () => (
+            <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
+              <AntDesign name="arrowleft" size={24} color="black" />
+            </TouchableOpacity>
+          ),
+          headerTitle: "",
         }}
       />
       {/* END OF DRAWER TITLE */}
@@ -41,58 +61,106 @@ export default function SideDrawer() {
       {/* DRAWER SCREENS */}
       <Drawer.Screen
         name="Payment"
-        component={BottomTabNavigator}
+        component={Payments}
         options={{
-          drawerLabel: () => <Payment />,
-          headerShown: false,
+          drawerLabel: () => (
+            <SideDrawerItems label={"payment"} iconName={"cash"} />
+          ),
+          headerShown: true,
+          headerLeft: () => (
+            <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
+              <AntDesign name="arrowleft" size={24} color="black" />
+            </TouchableOpacity>
+          ),
+          headerTitle: "",
         }}
       />
       <Drawer.Screen
-        name="Rider"
-        component={BottomTabNavigator}
+        name="Rides"
+        component={PaymentId}
         options={{
-          drawerLabel: () => <Rider />,
-          headerShown: false,
+          drawerLabel: () => <SideDrawerItems label={"rides"} />,
+          headerShown: true,
+          headerLeft: () => (
+            <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
+              <AntDesign name="arrowleft" size={24} color="black" />
+            </TouchableOpacity>
+          ),
+          headerTitle: "",
         }}
       />
       <Drawer.Screen
         name="Safety"
-        component={BottomTabNavigator}
+        component={PaymentId}
         options={{
-          drawerLabel: () => <Safety />,
-          headerShown: false,
+          drawerLabel: () => (
+            <SideDrawerItems label={"Safety"} iconName={"shield"} />
+          ),
+          headerShown: true,
+          headerLeft: () => (
+            <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
+              <AntDesign name="arrowleft" size={24} color="black" />
+            </TouchableOpacity>
+          ),
+          headerTitle: "",
         }}
       />
       <Drawer.Screen
         name="History"
-        component={BottomTabNavigator}
+        component={Rides}
         options={{
-          drawerLabel: () => <History />,
-          headerShown: false,
+          drawerLabel: () => (
+            <SideDrawerItems label={"History"} iconName={"book"} />
+          ),
+          headerShown: true,
+          headerLeft: () => (
+            <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
+              <AntDesign name="arrowleft" size={24} color="black" />
+            </TouchableOpacity>
+          ),
+          headerTitle: "",
         }}
       />
       <Drawer.Screen
         name="Discount"
-        component={BottomTabNavigator}
+        component={PaymentId}
         options={{
-          drawerLabel: () => <Discount />,
-          headerShown: false,
+          drawerLabel: () => <SideDrawerItems label={"Discount"} />,
+          headerShown: true,
+          headerLeft: () => (
+            <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
+              <AntDesign name="arrowleft" size={24} color="black" />
+            </TouchableOpacity>
+          ),
+          headerTitle: "",
         }}
       />
       <Drawer.Screen
         name="Settings"
-        component={BottomTabNavigator}
+        component={Settings}
         options={{
-          drawerLabel: () => <Settings />,
-          headerShown: false,
+          drawerLabel: () => <SideDrawerItems label={"Settings"} />,
+          headerShown: true,
+          headerLeft: () => (
+            <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
+              <AntDesign name="arrowleft" size={24} color="black" />
+            </TouchableOpacity>
+          ),
+          headerTitle: "",
         }}
       />
       <Drawer.Screen
-        name="Report"
-        component={BottomTabNavigator}
+        name="Support"
+        component={PaymentId}
         options={{
-          drawerLabel: () => <Report />,
-          headerShown: false,
+          drawerLabel: () => <SideDrawerItems label={"Support"} />,
+          headerShown: true,
+          headerLeft: () => (
+            <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
+              <AntDesign name="arrowleft" size={24} color="black" />
+            </TouchableOpacity>
+          ),
+          headerTitle: "",
         }}
       />
       {/* END OF DRAWER SCREENS */}
