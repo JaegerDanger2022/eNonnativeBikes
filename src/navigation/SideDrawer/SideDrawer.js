@@ -13,6 +13,7 @@ import SideDrawerItems from "../../DrawerScreenComponent/SideDrawerItems";
 import Payments from "../../screens/DrawerScreen/Payment";
 import Rides from "../../screens/BottomStackScreens/Rides";
 import Settings from "../../screens/BottomStackScreens/Settings";
+import Accounts from "../../screens/DrawerScreen/Account";
 
 const Drawer = createDrawerNavigator();
 
@@ -27,24 +28,10 @@ export default function SideDrawer() {
         },
       }}
     >
-      <Drawer.Screen
-        name="Maps"
-        component={BottomTabNavigator}
-        options={{
-          // drawerLabel: () => <Maps />,
-          headerShown: false,
-          headerLeft: () => (
-            <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
-              <AntDesign name="arrowleft" size={24} color="black" />
-            </TouchableOpacity>
-          ),
-          headerTitle: "",
-        }}
-      />
       {/* DRAWER TITLE */}
       <Drawer.Screen
         name="Accouting"
-        component={BottomTabNavigator}
+        component={Accounts}
         options={{
           drawerLabel: () => <Accounting />,
           headerShown: true,
@@ -121,25 +108,14 @@ export default function SideDrawer() {
           headerTitle: "",
         }}
       />
-      <Drawer.Screen
-        name="Discount"
-        component={PaymentId}
-        options={{
-          drawerLabel: () => <SideDrawerItems label={"Discount"} />,
-          headerShown: true,
-          headerLeft: () => (
-            <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
-              <AntDesign name="arrowleft" size={24} color="black" />
-            </TouchableOpacity>
-          ),
-          headerTitle: "",
-        }}
-      />
+
       <Drawer.Screen
         name="Settings"
         component={Settings}
         options={{
-          drawerLabel: () => <SideDrawerItems label={"Settings"} />,
+          drawerLabel: () => (
+            <SideDrawerItems label={"Settings"} iconName={"setting"} />
+          ),
           headerShown: true,
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
@@ -150,11 +126,39 @@ export default function SideDrawer() {
         }}
       />
       <Drawer.Screen
-        name="Support"
+        name="Label"
         component={PaymentId}
         options={{
-          drawerLabel: () => <SideDrawerItems label={"Support"} />,
+          drawerLabel: () => <SideDrawerItems label={"Label"} />,
           headerShown: true,
+          headerLeft: () => (
+            <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
+              <AntDesign name="arrowleft" size={24} color="black" />
+            </TouchableOpacity>
+          ),
+          headerTitle: "",
+        }}
+      />
+      <Drawer.Screen
+        name="About"
+        component={PaymentId}
+        options={{
+          drawerLabel: () => <SideDrawerItems label={"About"} />,
+          headerShown: true,
+          headerLeft: () => (
+            <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
+              <AntDesign name="arrowleft" size={24} color="black" />
+            </TouchableOpacity>
+          ),
+          headerTitle: "",
+        }}
+      />
+      <Drawer.Screen
+        name="Maps"
+        component={BottomTabNavigator}
+        options={{
+          // drawerLabel: () => <Maps />,
+          headerShown: false,
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
               <AntDesign name="arrowleft" size={24} color="black" />

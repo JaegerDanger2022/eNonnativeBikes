@@ -11,7 +11,7 @@ import { AntDesign } from "@expo/vector-icons";
 
 // routing
 
-const AccountID = () => {
+const Accounts = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       {/* ===================================== */}
@@ -105,10 +105,10 @@ const AccountID = () => {
           </View>
         </View>
       </Card>
-      // ==============================================
+
       {/* ===================================== */}
     </SafeAreaView>
   );
 };
 
-export default AccountID;
+export default Accounts;
