@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import MapView from "react-native-maps";
-import { StyleSheet, View, Image, Dimensions } from "react-native";
+import MapView, { MAP_TYPES, MapOverlay, Overlay } from "react-native-maps";
+import { StyleSheet, View, Image, Dimensions, TextInput } from "react-native";
 import { Marker } from "react-native-maps";
 import { FAB, Portal, Provider } from "react-native-paper";
-
 const bikeIcon = require("../../../assets/images/bike/bicycle_5717145.png");
 
 const CustomMap = () => {
@@ -11,9 +10,10 @@ const CustomMap = () => {
   const [mapRegion, setMapRegion] = useState({
     latitude: 7.732645028326621,
     longitude: -0.95566151663661,
-    latitudeDelta: 5.0,
-    longitudeDelta: 5.0,
+    latitudeDelta: 6.999,
+    longitudeDelta: 5.999,
   });
+  const [searchText, setSearchText] = useState("");
 
   const onStateChange = ({ open }) => setState({ open });
 
@@ -56,18 +56,19 @@ const CustomMap = () => {
           description={item.description}
           onPress={() => handleMarkerPress(item.location)}
         >
-          <Image source={bikeIcon} style={{ width: 30, height: 30 }} />
+          {/* <Overlay style={{ width: 70, height: 70 }} opacity={0.5}> */}
+          <Image source={bikeIcon} style={{ width: 70, height: 70 }} />
+          {/* </Overlay> */}
         </Marker>
       );
     });
   };
 
   const handleMarkerPress = (location) => {
-    // Zoom in to the selected location and adjust the delta values based on screen size
-    const screenAspectRation =
+    const screenAspectRatio =
       Dimensions.get("window").width / Dimensions.get("window").height;
-    const latitudeDelta = 0.5; // You can adjust this value as needed
-    const longitudeDelta = latitudeDelta * screenAspectRation;
+    const latitudeDelta = 5.0;
+    const longitudeDelta = latitudeDelta * screenAspectRatio;
 
     setMapRegion({
       latitude: location.latitude,
@@ -81,48 +82,39 @@ const CustomMap = () => {
     // console.log(region);
   };
 
+  const searchLocation = () => {
+    const foundLocation = locationOfInterest.find(
+      (location) => location.title.toLowerCase() === searchText.toLowerCase()
+    );
+
+    if (foundLocation) {
+      handleMarkerPress(foundLocation.location);
+    }
+  };
+
+  const customMapStyle = [
+    {
+      featureType: "water",
+      elementType: "geometry",
+      stylers: [
+        {
+          color: "#1e1e1e",
+        },
+      ],
+    },
+  ];
+
   return (
     <View style={styles.container}>
-      <Provider>
-        <MapView
-          style={styles.map}
-          region={mapRegion}
-          onRegionChange={onRegionChange}
-        >
-          <Portal>
-            <FAB.Group
-              open={open}
-              visible
-              icon={open ? "calendar-today" : "plus"}
-              actions={[
-                { icon: "plus", onPress: () => console.log("Pressed add") },
-                {
-                  icon: "star",
-                  label: "Star",
-                  onPress: () => console.log("Pressed star"),
-                },
-                {
-                  icon: "email",
-                  label: "Email",
-                  onPress: () => console.log("Pressed email"),
-                },
-                {
-                  icon: "bell",
-                  label: "Remind",
-                  onPress: () => console.log("Pressed notifications"),
-                },
-              ]}
-              onStateChange={onStateChange}
-              onPress={() => {
-                if (open) {
-                  // do something if the speed dial is open
-                }
-              }}
-            />
-          </Portal>
-          {showLocationOfInterest()}
-        </MapView>
-      </Provider>
+      <MapView
+        style={styles.map}
+        region={mapRegion}
+        onRegionChange={onRegionChange}
+        mapType="standard"
+        customMapStyle={customMapStyle}
+      >
+        {showLocationOfInterest()}
+      </MapView>
     </View>
   );
 };
@@ -132,8 +124,16 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   map: {
-    width: Dimensions.get("window").width, // Set map width to screen width
-    height: Dimensions.get("window").height, // Set map height to screen height
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
+  },
+  searchBar: {
+    height: 40,
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 5,
+    margin: 10,
+    padding: 10,
   },
 });
 

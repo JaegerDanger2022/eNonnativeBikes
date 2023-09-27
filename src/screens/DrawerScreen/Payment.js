@@ -1,13 +1,12 @@
-import { View, Text } from "react-native";
+import { View, Text, SafeAreaView } from "react-native";
 import React from "react";
-import { SafeAreaView } from "react-native";
 import { Card, Divider } from "react-native-paper";
 import { Fontisto } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 
-const Wallet = () => {
+const Payments = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Card style={{ width: "100%", height: 292 }}>
@@ -130,4 +129,4 @@ const Wallet = () => {
   );
 };
 
-export default Wallet;
+export default Payments;
