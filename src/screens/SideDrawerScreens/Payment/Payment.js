@@ -1,27 +1,25 @@
-import { View, Text, SafeAreaView } from "react-native";
+import { View, Text } from "react-native";
 import React from "react";
+import { SafeAreaView } from "react-native";
 import { Card, Divider } from "react-native-paper";
 import { Fontisto } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
-// import { TouchableOpacity } from "react-native";
+import { Image } from "react-native";
 
-const Payments = () => {
+const Payment = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Card style={{ width: "100%", height: 292 }}>
         <View style={{ padding: 20 }}>
           <View style={{ flexDirection: "column", gap: 20 }}>
             <View>
-              <Text style={{ fontSize: 15, fontWeight: "bold" }}>Payment</Text>
+              <Text style={{ fontSize: 20, fontWeight: "bold" }}>Payment</Text>
             </View>
             <Card
               style={{ width: "100%", backgroundColor: "#F5F4F2", height: 130 }}
             >
-              {/* <TouchableOpacity
-                onPress={() => navigation.navigate("Accouting")}
-              > */}
               <View
                 style={{
                   flexDirection: "column",
@@ -31,22 +29,27 @@ const Payments = () => {
                 }}
               >
                 <View>
-                  <Text>Payment</Text>
-                  <Text>GHC 0</Text>
+                  <Text style={{ fontSize: 15, fontWeight: "800" }}>
+                    Payment Amount
+                  </Text>
+                  <Text style={{ fontSize: 15, fontWeight: "400" }}>GHC 0</Text>
                 </View>
                 <Divider />
                 <View>
-                  <Text>Ride Balance is available</Text>
+                  <Text style={{ fontSize: 15, fontWeight: "800" }}>
+                    Ride Balance is available
+                  </Text>
                 </View>
               </View>
-              {/* </TouchableOpacity> */}
             </Card>
             <View style={{ flexDirection: "row", gap: 20 }}>
               <View>
                 <AntDesign name="questioncircle" size={24} color="red" />
               </View>
               <View>
-                <Text>What is Ride balance?</Text>
+                <Text style={{ fontSize: 15, fontWeight: "600" }}>
+                  What is Ride balance?
+                </Text>
               </View>
             </View>
             <View style={{ flexDirection: "row", gap: 20 }}>
@@ -54,7 +57,9 @@ const Payments = () => {
                 <Ionicons name="md-timer-sharp" size={24} color="black" />
               </View>
               <View>
-                <Text>See balance and transactions</Text>
+                <Text style={{ fontSize: 15, fontWeight: "600" }}>
+                  See balance and transactions
+                </Text>
               </View>
             </View>
           </View>
@@ -71,12 +76,12 @@ const Payments = () => {
               style={{
                 width: "100%",
                 backgroundColor: "#F5F4F2",
-                height: 150,
+                height: 200,
                 padding: 15,
               }}
             >
               <View>
-                <Text>Payment</Text>
+                <Text style={{ fontSize: 20, fontWeight: "800" }}>Payment</Text>
               </View>
               <View
                 style={{ flexDirection: "column", gap: 10, marginVertical: 20 }}
@@ -125,6 +130,26 @@ const Payments = () => {
                     <Text>Add Debit/credit card</Text>
                   </View>
                 </View>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    gap: 20,
+                    alignItems: "center",
+                  }}
+                >
+                  <View>
+                    {/* <Fontisto name="visa" size={24} color="black" /> */}
+                    <Image
+                      source={require("../../../../assets/images/mtnLogo/mtn-group.png")}
+                      style={{ width: 40, height: 30 }}
+                    />
+                  </View>
+                  <View>
+                    <Text style={{ fontSize: 18, fontWeight: "500" }}>
+                      Mobile Money
+                    </Text>
+                  </View>
+                </View>
               </View>
             </Card>
           </View>
@@ -134,4 +159,4 @@ const Payments = () => {
   );
 };
 
-export default Payments;
+export default Payment;

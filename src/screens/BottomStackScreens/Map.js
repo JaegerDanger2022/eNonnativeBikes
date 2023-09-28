@@ -6,8 +6,10 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Feather, Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { DrawerActions } from "@react-navigation/native"; // Import DrawerActions
+import { clearAllData } from "../../../app/utils/AsyncStorage/ClearData";
 
 const Map = () => {
+  clearAllData();
   const navigation = useNavigation();
   const [searchVisible, setSearchVisible] = useState(false);
   const [searchText, setSearchText] = useState("");
