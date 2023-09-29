@@ -3,7 +3,10 @@ import React from "react";
 import { Divider } from "react-native-paper";
 import ToggleSwitch from "../../components/ToggleSwitch/ToggleSwitch";
 
-const Settings = () => {
+const SettingDetail = ({ navigation }) => {
+  // const handleToggleSwitch = () => {
+  //   navigation.navigate("Notification");
+  // };
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={{ padding: 15 }}>
@@ -33,11 +36,11 @@ const Settings = () => {
       </View>
       <Divider style={{ height: 20 }} />
       <View>
-        {/* <TouchableOpacity onPress={() => navigation.navigate("Notification")}> */}
-        <View>
-          <ToggleSwitch names={"Notification"} />
-        </View>
-        {/* </TouchableOpacity> */}
+        <TouchableOpacity onPress={() => navigation.navigate("Notification")}>
+          <View>
+            <ToggleSwitch names={"Notification"} />
+          </View>
+        </TouchableOpacity>
       </View>
       <Divider />
       <View>
@@ -47,4 +50,4 @@ const Settings = () => {
   );
 };
 
-export default Settings;
+export default SettingDetail;

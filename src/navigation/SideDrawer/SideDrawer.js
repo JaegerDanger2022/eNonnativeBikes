@@ -1,20 +1,22 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import BottomTabNavigator from "../BottomTabsNavigator/BottomTabsNavigator";
-import { AntDesign } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
 import SideDrawerItems from "../../components/SideDrawerScreenComponent/SideDrawerItems";
 import { useNavigation } from "@react-navigation/native";
 
 // Drawers Component
-import Accounting from "../../components/SideDrawerScreenComponent/Accounting";
+// import Accounting from "../../components/SideDrawerScreenComponent/Account";
 
 // Drawer Screens
-import PaymentId from "../../screens/DrawerScreen/Payment";
-import Payments from "../../screens/DrawerScreen/Payment";
-import Rides from "../../screens/BottomStackScreens/Rides";
-import Settings from "../../screens/BottomStackScreens/Settings";
-import Accounts from "../../screens/DrawerScreen/Account";
-import PaymentsDetailsNavigator from "./PaymentDetails/PaymentsDetails";
+
+// import PaymentsDetailsNavigator from "./PaymentDetailsNavigatot/PaymentDetailsNavigator";
+import AccountDetailsNavigator from "./AccountsDetailsNavigator/AccountsDetailsNavigator";
+import Account from "../../components/SideDrawerScreenComponent/Account";
+import SideDrawerNavigationIcon from "../../components/SideDrawerNavigationComponent/SideDrawerNavigationIcon";
+import PaymentDetailsNavigator from "./PaymentDetailsNavigator/PaymentDetailsNavigator";
+import RideDetailsNavigator from "./RideDetailsNavigator/RideDetailsNavigator";
+import SettingsDetailsNavigator from "./SettingsDetailsNavigator/SettingsDetailsNavigator";
+
 //
 
 const Drawer = createDrawerNavigator();
@@ -26,39 +28,48 @@ export default function SideDrawer() {
       initialRouteName="Maps"
       screenOptions={{
         drawerStyle: {
-          width: 350,
+          width: 320,
         },
       }}
     >
       {/* DRAWER TITLE */}
       <Drawer.Screen
-        name="Accouting"
-        component={Accounts}
+        name="Account"
+        component={AccountDetailsNavigator}
         options={{
-          drawerLabel: () => <Accounting />,
-          headerShown: true,
-          headerLeft: () => (
-            <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
-              <AntDesign name="arrowleft" size={24} color="black" />
-            </TouchableOpacity>
-          ),
+          drawerLabel: () => <Account />,
           headerTitle: "",
+          headerShown: false,
         }}
       />
       {/* END OF DRAWER TITLE */}
       {/* ==================== */}
       {/* DRAWER SCREENS */}
       <Drawer.Screen
+        name="Maps"
+        component={BottomTabNavigator}
+        options={{
+          drawerLabel: () => <SideDrawerItems label={"Map"} />,
+          headerShown: false,
+          headerLeft: () => (
+            <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
+              <SideDrawerNavigationIcon />
+            </TouchableOpacity>
+          ),
+          headerTitle: "",
+        }}
+      />
+      <Drawer.Screen
         name="Payment"
-        component={PaymentsDetailsNavigator}
+        component={PaymentDetailsNavigator}
         options={{
           drawerLabel: () => (
             <SideDrawerItems label={"payment"} iconName={"cash"} />
           ),
-          headerShown: true,
+          headerShown: false,
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
-              <AntDesign name="arrowleft" size={24} color="black" />
+              <SideDrawerNavigationIcon iconName={"arrowleft"} />
             </TouchableOpacity>
           ),
           headerTitle: "",
@@ -66,13 +77,15 @@ export default function SideDrawer() {
       />
       <Drawer.Screen
         name="Rides"
-        component={PaymentId}
+        component={RideDetailsNavigator}
         options={{
-          drawerLabel: () => <SideDrawerItems label={"rides"} />,
-          headerShown: true,
+          drawerLabel: () => (
+            <SideDrawerItems label={"rides"} iconName={"bicycle"} />
+          ),
+          headerShown: false,
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
-              <AntDesign name="arrowleft" size={24} color="black" />
+              <SideDrawerNavigationIcon iconName={"arrowleft"} />
             </TouchableOpacity>
           ),
           headerTitle: "",
@@ -80,31 +93,15 @@ export default function SideDrawer() {
       />
       <Drawer.Screen
         name="Safety"
-        component={PaymentId}
+        component={BottomTabNavigator}
         options={{
           drawerLabel: () => (
-            <SideDrawerItems label={"Safety"} iconName={"shield"} />
+            <SideDrawerItems label={"Safety"} icon={"shield"} />
           ),
           headerShown: true,
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
-              <AntDesign name="arrowleft" size={24} color="black" />
-            </TouchableOpacity>
-          ),
-          headerTitle: "",
-        }}
-      />
-      <Drawer.Screen
-        name="History"
-        component={Rides}
-        options={{
-          drawerLabel: () => (
-            <SideDrawerItems label={"History"} iconName={"book"} />
-          ),
-          headerShown: true,
-          headerLeft: () => (
-            <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
-              <AntDesign name="arrowleft" size={24} color="black" />
+              <SideDrawerNavigationIcon iconName={"arrowleft"} />
             </TouchableOpacity>
           ),
           headerTitle: "",
@@ -113,27 +110,27 @@ export default function SideDrawer() {
 
       <Drawer.Screen
         name="Settings"
-        component={Settings}
+        component={SettingsDetailsNavigator}
         options={{
           drawerLabel: () => <SideDrawerItems label={"Settings"} />,
-          headerShown: true,
+          headerShown: false,
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
-              <AntDesign name="arrowleft" size={24} color="black" />
+              <SideDrawerNavigationIcon iconName={"arrowleft"} />
             </TouchableOpacity>
           ),
           headerTitle: "",
         }}
       />
       <Drawer.Screen
-        name="Label"
-        component={PaymentId}
+        name="Legal"
+        component={BottomTabNavigator}
         options={{
-          drawerLabel: () => <SideDrawerItems label={"Label"} />,
+          drawerLabel: () => <SideDrawerItems label={"Legal"} />,
           headerShown: true,
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
-              <AntDesign name="arrowleft" size={24} color="black" />
+              <SideDrawerNavigationIcon iconName={"arrowleft"} />
             </TouchableOpacity>
           ),
           headerTitle: "",
@@ -141,32 +138,21 @@ export default function SideDrawer() {
       />
       <Drawer.Screen
         name="About"
-        component={PaymentId}
+        component={BottomTabNavigator}
         options={{
           drawerLabel: () => <SideDrawerItems label={"About"} />,
           headerShown: true,
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
-              <AntDesign name="arrowleft" size={24} color="black" />
+              <SideDrawerNavigationIcon iconName={"arrowleft"} />
             </TouchableOpacity>
           ),
           headerTitle: "",
         }}
       />
-      <Drawer.Screen
-        name="Maps"
-        component={BottomTabNavigator}
-        options={{
-          // drawerLabel: () => <Maps />,
-          headerShown: false,
-          headerLeft: () => (
-            <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
-              <AntDesign name="arrowleft" size={24} color="black" />
-            </TouchableOpacity>
-          ),
-          headerTitle: "",
-        }}
-      />
+
+      {/* ==================================== */}
+
       {/* END OF DRAWER SCREENS */}
     </Drawer.Navigator>
   );

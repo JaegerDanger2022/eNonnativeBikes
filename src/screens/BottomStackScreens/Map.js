@@ -9,7 +9,7 @@ import { DrawerActions } from "@react-navigation/native"; // Import DrawerAction
 import { clearAllData } from "../../../app/utils/AsyncStorage/ClearData";
 
 const Map = () => {
-  clearAllData();
+  // clearAllData();
   const navigation = useNavigation();
   const [searchVisible, setSearchVisible] = useState(false);
   const [searchText, setSearchText] = useState("");

@@ -8,10 +8,11 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
+import { TouchableOpacity } from "react-native";
 
 // routing
 
-const Accounts = () => {
+const AccountDetail = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       {/* ===================================== */}
@@ -28,10 +29,10 @@ const Accounts = () => {
             <EvilIcons name="user" size={100} color="black" />
           </View>
           <View>
-            <Text style={{ fontWeight: "bold", fontSize: 25 }}>User Name</Text>
+            <Text style={{ fontWeight: "bold", fontSize: 26 }}>User Name</Text>
           </View>
           <View>
-            <Text style={{ fontSize: 15 }}>+265656666</Text>
+            <Text style={{ fontSize: 17 }}>+265656666</Text>
           </View>
           <View style={{ flexDirection: "row", alignItems: "center", gap: 4 }}>
             <View>
@@ -41,6 +42,22 @@ const Accounts = () => {
               <Text>9.0</Text>
             </View>
           </View>
+          <TouchableOpacity onPress={() => navigation.navigate("Edit")}>
+            <View
+              style={{ flexDirection: "row", alignItems: "center", gap: 4 }}
+            >
+              <View>
+                <Text
+                  style={{ fontWeight: "bold", fontSize: 20, color: "green" }}
+                >
+                  Edit
+                </Text>
+              </View>
+              <View>
+                <EvilIcons name="pencil" size={30} color="black" />
+              </View>
+            </View>
+          </TouchableOpacity>
         </View>
         {/* ===================== */}
         <View
@@ -52,8 +69,8 @@ const Accounts = () => {
           }}
         >
           <View style={{ flexDirection: "row", gap: 10 }}>
-            <FontAwesome5 name="envelope" size={20} color="black" />
-            <Text>@gmail.com</Text>
+            <FontAwesome5 name="envelope" size={25} color="black" />
+            <Text style={{ fontSize: 18 }}>@gmail.com</Text>
           </View>
 
           <View>
@@ -65,16 +82,16 @@ const Accounts = () => {
       <Card style={{ marginVertical: 15 }}>
         <View style={{ flexDirection: "column", gap: 20, padding: 15 }}>
           <View>
-            <Text style={{ fontSize: 25, fontWeight: "bold" }}>Places</Text>
+            <Text style={{ fontSize: 27, fontWeight: "bold" }}>Places</Text>
           </View>
           <View style={{ flexDirection: "row", gap: 10, alignItems: "center" }}>
-            <AntDesign name="home" size={24} color="black" />
-            <Text>Home</Text>
+            <AntDesign name="home" size={25} color="black" />
+            <Text style={{ fontSize: 18 }}>Home</Text>
           </View>
           <Divider />
           <View style={{ flexDirection: "row", gap: 10, alignItems: "center" }}>
-            <Entypo name="location-pin" size={24} color="black" />
-            <Text>Location</Text>
+            <Entypo name="location-pin" size={25} color="black" />
+            <Text style={{ fontSize: 18 }}>Location</Text>
           </View>
         </View>
       </Card>
@@ -82,12 +99,12 @@ const Accounts = () => {
       <Card style={{ marginVertical: 5 }}>
         <View style={{ flexDirection: "column", gap: 20, padding: 15 }}>
           <View style={{ flexDirection: "column", gap: 10 }}>
-            <Text>Languages</Text>
-            <Text>English-US</Text>
+            <Text style={{ fontSize: 18 }}>Languages</Text>
+            <Text style={{ fontSize: 18 }}>English-US</Text>
           </View>
           <Divider />
           <View style={{ flexDirection: "row", gap: 10, alignItems: "center" }}>
-            <Text>Communication</Text>
+            <Text style={{ fontSize: 18 }}>Communication</Text>
           </View>
         </View>
       </Card>
@@ -95,13 +112,15 @@ const Accounts = () => {
       <Card style={{ marginVertical: 5, height: "30%" }}>
         <View style={{ flexDirection: "column", gap: 20, padding: 15 }}>
           <View style={{ flexDirection: "row", gap: 10, alignItems: "center" }}>
-            <AntDesign name="logout" size={24} color="black" />
-            <Text>Log out</Text>
+            <AntDesign name="logout" size={25} color="black" />
+            <Text style={{ fontSize: 18, fontWeight: "600" }}>Log out</Text>
           </View>
           <Divider />
           <View style={{ flexDirection: "row", gap: 10, alignItems: "center" }}>
-            <AntDesign name="delete" size={24} color="black" />
-            <Text>Delete Account</Text>
+            <AntDesign name="delete" size={25} color="black" />
+            <Text style={{ fontSize: 18, fontWeight: "600" }}>
+              Delete Account
+            </Text>
           </View>
         </View>
       </Card>
@@ -111,4 +130,4 @@ const Accounts = () => {
   );
 };
 
-export default Accounts;
+export default AccountDetail;

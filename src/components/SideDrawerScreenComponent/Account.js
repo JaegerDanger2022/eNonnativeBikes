@@ -4,19 +4,21 @@ import { Button, Divider } from "react-native-paper";
 import { SafeAreaView } from "react-native";
 import { EvilIcons } from "@expo/vector-icons";
 
-const Accounting = () => {
+const Account = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <View style={{ alignItems: "center", justifyContent: "center" }}>
+      <View
+        style={{ alignItems: "center", justifyContent: "center", padding: 5 }}
+      >
         <View>
-          <EvilIcons name="user" size={60} color="black" />
+          <EvilIcons name="user" size={90} color="black" />
         </View>
-        <View>
+        <View style={{ alignItems: "center" }}>
           <Text
             style={{
               fontSize: 20,
               fontWeight: "bold",
-              alignItems: "flex-start",
+              alignItems: "center",
             }}
           >
             UserName
@@ -30,4 +32,4 @@ const Accounting = () => {
   );
 };
 
-export default Accounting;
+export default Account;
