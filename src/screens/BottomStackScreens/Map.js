@@ -7,11 +7,13 @@ import { Feather, Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { DrawerActions } from "@react-navigation/native"; // Import DrawerActions
 import { clearAllData } from "../../../app/utils/AsyncStorage/ClearData";
+import { Avatar, useTheme } from "react-native-paper";
 
 const Map = () => {
-  // clearAllData();
+  const theme = useTheme();
   const navigation = useNavigation();
   const [searchVisible, setSearchVisible] = useState(false);
+
   const [searchText, setSearchText] = useState("");
 
   const [search, setSearch] = useState("");
@@ -39,31 +41,6 @@ const Map = () => {
     navigation.dispatch(DrawerActions.openDrawer()); // Use dispatch to open the drawer
   };
 
-  // ==================================
-  //   const handleMarkerPress = (location) => {
-  //     const screenAspectRatio =
-  //       Dimensions.get("window").width / Dimensions.get("window").height;
-  //     const latitudeDelta = 5.0;
-  //     const longitudeDelta = latitudeDelta * screenAspectRatio;
-
-  //     setMapRegion({
-  //       latitude: location.latitude,
-  //       longitude: location.longitude,
-  //       latitudeDelta,
-  //       longitudeDelta,
-  //     });
-  //   };
-
-  // const searchLocation = () => {
-  //   const foundLocation = locationOfInterest.find(
-  //     (location) => location.title.toLowerCase() === searchText.toLowerCase()
-  //   );
-
-  //   if (foundLocation) {
-  //     handleMarkerPress(foundLocation.location);
-  //   }
-  // };
-  // ==================================
   return (
     <View style={{ flex: 1 }}>
       <View style={{ flex: 1 }}>

@@ -3,16 +3,20 @@ import React from "react";
 import RideSummary from "../../components/RidesComponents/RideSummary";
 import { useTheme } from "react-native-paper";
 
-const Rides = () => {
+const Rides = ({ navigation }) => {
+  const handlePress = () => {
+    navigation.navigate("RideDetails");
+  };
   const theme = useTheme();
   return (
     <View style={{ flex: 1, backgroundColor: theme.colors.background }}>
       <RideSummary
         startIcon="bicycle"
         address={"Virginia Walk"}
-        date={"24th September, 2023"}
+        date={"90th September, 2023"}
         amount={50.0}
-        time={"30:20"}
+        time={30.24}
+        onpress={handlePress}
       />
     </View>
   );

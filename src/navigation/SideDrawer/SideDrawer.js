@@ -1,23 +1,21 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import BottomTabNavigator from "../BottomTabsNavigator/BottomTabsNavigator";
-import { TouchableOpacity } from "react-native";
-import SideDrawerItems from "../../components/SideDrawerScreenComponent/SideDrawerItems";
-import { useNavigation } from "@react-navigation/native";
 
 // Drawers Component
 // import Accounting from "../../components/SideDrawerScreenComponent/Account";
 
 // Drawer Screens
 
-// import PaymentsDetailsNavigator from "./PaymentDetailsNavigatot/PaymentDetailsNavigator";
+import { TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import SideDrawerItems from "../../components/SideDrawerScreenComponent/SideDrawerItems";
+
 import AccountDetailsNavigator from "./AccountsDetailsNavigator/AccountsDetailsNavigator";
-import Account from "../../components/SideDrawerScreenComponent/Account";
-import SideDrawerNavigationIcon from "../../components/SideDrawerNavigationComponent/SideDrawerNavigationIcon";
 import PaymentDetailsNavigator from "./PaymentDetailsNavigator/PaymentDetailsNavigator";
 import RideDetailsNavigator from "./RideDetailsNavigator/RideDetailsNavigator";
 import SettingsDetailsNavigator from "./SettingsDetailsNavigator/SettingsDetailsNavigator";
-
-//
+import SideDrawerNavigationIcon from "../../components/SideDrawerNavigationIcon/SideDrawerNavigationIcon";
+import Account from "../../components/SideDrawerScreenComponent/Account";
 
 const Drawer = createDrawerNavigator();
 

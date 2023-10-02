@@ -2,9 +2,8 @@ import { DrawerActions, useNavigation } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Ionicons } from "@expo/vector-icons";
-import SideDrawerNavigationIcon from "../../../components/SideDrawerNavigationComponent/SideDrawerNavigationIcon";
-import RideDetail from "../../../screens/DrawerScreen/RideDetail";
 import RideDetails from "../../../components/RidesComponents/RideDetails";
+import RideDetail from "../../../screens/DrawerScreen/RideDetail";
 
 const Ride = createStackNavigator();
 

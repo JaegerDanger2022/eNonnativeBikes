@@ -3,10 +3,11 @@ import { TouchableOpacity } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { DrawerActions, useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
+
 import AccountDetail from "../../../screens/DrawerScreen/AccountDetail";
 import AccountEditing from "../../../screens/SideDrawerScreens/AccountEditing/AccountEditing";
 import AccountUpdate from "../../../screens/SideDrawerScreens/AccountEditing/AccountUpdate/AccountUpdate";
-import SideDrawerNavigationIcon from "../../../components/SideDrawerNavigationComponent/SideDrawerNavigationIcon";
+import SideDrawerNavigationIcon from "../../../components/SideDrawerNavigationIcon/SideDrawerNavigationIcon";
 
 const Account = createStackNavigator();
 

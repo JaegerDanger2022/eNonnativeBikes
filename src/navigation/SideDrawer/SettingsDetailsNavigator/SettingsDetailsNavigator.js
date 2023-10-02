@@ -2,9 +2,10 @@ import { DrawerActions, useNavigation } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Ionicons } from "@expo/vector-icons";
-import Settings from "../../../screens/BottomStackScreens/Settings";
 import SettingDetail from "../../../screens/DrawerScreen/SettingDetail";
 import SettingEditing from "../../../screens/SideDrawerScreens/SettingEditing/SettingEditing";
+// import SettingDetail from "../../../screens/DrawerScreen/SettingDetail";
+// import SettingEditing from "../../../screens/SideDrawerScreens/SettingEditing/SettingEditing";
 
 const Setting = createStackNavigator();
 

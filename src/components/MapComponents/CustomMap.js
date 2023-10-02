@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import MapView, { MAP_TYPES, MapOverlay, Overlay } from "react-native-maps";
-import { StyleSheet, View, Image, Dimensions, TextInput } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Image,
+  Dimensions,
+  TextInput,
+  Alert,
+} from "react-native";
 import { Marker } from "react-native-maps";
 import { FAB, Portal, Provider } from "react-native-paper";
 const bikeIcon = require("../../../assets/images/bike/bicycle_5717145.png");
@@ -54,7 +61,8 @@ const CustomMap = () => {
           coordinate={item.location}
           title={item.title}
           description={item.description}
-          onPress={() => handleMarkerPress(item.location)}
+          // onPress={() => handleMarkerPress(item.location)}
+          onPress={() => Alert.alert("hello")}
         >
           {/* <Overlay style={{ width: 70, height: 70 }} opacity={0.5}> */}
           <Image source={bikeIcon} style={{ width: 70, height: 70 }} />
