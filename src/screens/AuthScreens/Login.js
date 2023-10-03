@@ -11,16 +11,11 @@ import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CustomTextInput from "../../components/CustomTextInput";  
 import ActionButton from "../../components/ActionButton";
-import { Avatar, useTheme } from "react-native-paper";
-import CustomCheckBox from "../../components/CustomCheckBox"; 
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { setLogin } from "../../../app/utils/redux/features/currentUserSlice";
-import { doc, setDoc, getDoc } from "@firebase/firestore";
+import { useTheme } from "react-native-paper";
+import {  signInWithEmailAndPassword } from "firebase/auth";
 import { useDispatch } from "react-redux";
-import { setEmail } from "../../../app/utils/redux/features/userProfileSlice";
-import GoogleSignInButton from "../../components/AuthFlow/GoogleSignIn";
-import { validateEmail, validatePassword } from "../../../app/utils/validation/validation";
-import { auth, db } from "../../../app/utils/firebaseConfig";
+import { auth} from "../../../app/utils/firebaseConfig";
+import { storeData } from "../../../app/utils/AsyncStorage/StoreDate";
 
 const Login = ({ navigation }) => {
   // redux dispatch
@@ -36,17 +31,21 @@ const Login = ({ navigation }) => {
 
     //   handle sign in
   const handleSignIn = async () => {
-    setLoading(true);
+    setIsLoading(true);
     signInWithEmailAndPassword(auth, signInEmail, signInPassword)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
+        storeData('credentials',user.uid)
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         // Handle any other error codes or cases
         switch (errorCode) {
+          case "auth/invalid-login-credentials":
+            Alert.alert("The password/email you entered was wrong");
+            break;
           case "auth/wrong-password":
             Alert.alert("The password you entered was wrong");
             break;
@@ -60,11 +59,11 @@ const Login = ({ navigation }) => {
             Alert.alert("Account doesn't exist");
             break;
           case "auth/invalid-email":
-            Alert.alert("Please enter an email");
+            Alert.alert("Please enter a valid email");
             break;
           default:
         }
-        setLoading(false);
+        setIsLoading(false);
 
         console.log(`errorCode:${errorCode}  errorMessage:${errorMessage}`);
       });
@@ -100,6 +99,7 @@ const Login = ({ navigation }) => {
               label={"Password"}
               value={signInPassword}
               textInputOnchange={(text) => setSignInPassword(text)}
+              secureTextEntry={true}
             />
           </View>
          

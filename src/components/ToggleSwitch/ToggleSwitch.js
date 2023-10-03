@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import { Switch } from "react-native-paper";
 
-const ToggleSwitch = ({ names, belowNames }) => {
+const ToggleSwitch = ({ name, belowname }) => {
   const [isSwitchOn, setIsSwitchOn] = React.useState(false);
   const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
   return (
@@ -25,8 +25,8 @@ const ToggleSwitch = ({ names, belowNames }) => {
           justifyContent: "center",
         }}
       >
-        <Text style={{ fontSize: 20 }}>{names}</Text>
-        <Text style={{ fontSize: 15 }}>{belowNames}</Text>
+        <Text style={{ fontSize: 20 }}>{name}</Text>
+        <Text style={{ fontSize: 15 }}>{belowname}</Text>
       </View>
       <Text>
         <Switch value={isSwitchOn} onValueChange={onToggleSwitch} />

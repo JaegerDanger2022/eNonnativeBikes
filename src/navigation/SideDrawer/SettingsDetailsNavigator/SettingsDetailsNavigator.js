@@ -15,7 +15,7 @@ export default function SettingsDetailsNavigator() {
     <Setting.Navigator initialRouteName="settings">
       {/* Seittings */}
       <Setting.Screen
-        name="settings"
+        name="SettingsScreen"
         component={SettingDetail}
         options={{
           headerLeft: () => (
@@ -26,6 +26,7 @@ export default function SettingsDetailsNavigator() {
               <Ionicons name="menu" size={30} color="black" />
             </TouchableOpacity>
           ),
+          headerTitle:'Settings'
         }}
       />
       <Setting.Group

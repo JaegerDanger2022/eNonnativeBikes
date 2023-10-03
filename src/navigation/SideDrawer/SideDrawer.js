@@ -28,6 +28,7 @@ export default function SideDrawer() {
         drawerStyle: {
           width: 320,
         },
+        drawerType:'front'
       }}
     >
       {/* DRAWER TITLE */}
@@ -47,7 +48,7 @@ export default function SideDrawer() {
         name="Maps"
         component={BottomTabNavigator}
         options={{
-          drawerLabel: () => <SideDrawerItems label={"Map"} />,
+          drawerLabel: () => <SideDrawerItems label={"Map"} icon={'map'} />,
           headerShown: false,
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
@@ -62,7 +63,7 @@ export default function SideDrawer() {
         component={PaymentDetailsNavigator}
         options={{
           drawerLabel: () => (
-            <SideDrawerItems label={"payment"} iconName={"cash"} />
+            <SideDrawerItems label={"Payment"} iconName={"cash"} />
           ),
           headerShown: false,
           headerLeft: () => (
@@ -78,7 +79,7 @@ export default function SideDrawer() {
         component={RideDetailsNavigator}
         options={{
           drawerLabel: () => (
-            <SideDrawerItems label={"rides"} iconName={"bicycle"} />
+            <SideDrawerItems label={"Rides"} iconName={"bicycle"} />
           ),
           headerShown: false,
           headerLeft: () => (
@@ -110,7 +111,7 @@ export default function SideDrawer() {
         name="Settings"
         component={SettingsDetailsNavigator}
         options={{
-          drawerLabel: () => <SideDrawerItems label={"Settings"} />,
+          drawerLabel: () => <SideDrawerItems label={"Settings"} icon={"settings"}/>,
           headerShown: false,
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
@@ -124,7 +125,7 @@ export default function SideDrawer() {
         name="Legal"
         component={BottomTabNavigator}
         options={{
-          drawerLabel: () => <SideDrawerItems label={"Legal"} />,
+          drawerLabel: () => <SideDrawerItems label={"Legal"} icon={'clipboard'}/>,
           headerShown: true,
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
@@ -138,7 +139,7 @@ export default function SideDrawer() {
         name="About"
         component={BottomTabNavigator}
         options={{
-          drawerLabel: () => <SideDrawerItems label={"About"} />,
+          drawerLabel: () => <SideDrawerItems label={"About"} icon={'info'}/>,
           headerShown: true,
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.navigate("Maps")}>

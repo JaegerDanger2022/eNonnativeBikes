@@ -1,7 +1,7 @@
 import React from "react";
 import { TextInput } from "react-native-paper";
 
-const CustomTextInput = ({ label, value, textInputOnchange }) => {
+const CustomTextInput = ({ label, value, textInputOnchange, secureTextEntry }) => {
   return (
     <TextInput
       mode="outlined"
@@ -9,6 +9,7 @@ const CustomTextInput = ({ label, value, textInputOnchange }) => {
       value={value}
       onChangeText={textInputOnchange}
       style={{ width: 350 }}
+      secureTextEntry={secureTextEntry}
     />
   );
 };

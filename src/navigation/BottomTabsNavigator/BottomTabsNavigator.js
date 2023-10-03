@@ -4,10 +4,11 @@ import { Ionicons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useTheme } from "react-native-paper";
 import Map from "../../screens/BottomStackScreens/Map"; 
-import Settings from "../../screens/BottomStackScreens/Settings";
+// import Settings from "../../screens/BottomStackScreens/Settings"; **** Deprecated
 import Wallet from "../../screens/BottomStackScreens/Wallet"; 
 import Rides from "../../screens/BottomStackScreens/Rides";
 import RidesNavigator from "../RidesNavigator/RidesNavigator";
+import SettingsDetailsNavigator from "../SideDrawer/SettingsDetailsNavigator/SettingsDetailsNavigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -53,6 +54,7 @@ export default function BottomTabNavigator({ navigation, route }) {
           component={RidesNavigator}
           options={{
             headerShown:false,
+            tabBarLabel:'Rides',
             tabBarIcon: ({ focused }) => (
               <MaterialCommunityIcons
                 name={focused ? "bicycle" : "bicycle"}
@@ -84,7 +86,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         />
         <Tab.Screen
           name="Settings"
-          component={Settings}
+          component={SettingsDetailsNavigator}
           options={{
             tabBarIcon: ({ focused }) => (
               <Ionicons

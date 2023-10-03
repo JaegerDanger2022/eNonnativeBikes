@@ -30,7 +30,7 @@ const SideDrawerItems = ({ label, iconName, icon }) => {
             </Text>
           </View>
         </View>
-        <Divider style={{ height: 5, backgroundColor: "#F5F4F2" }} />
+        <Divider style={{ height: 2, backgroundColor: "#F5F4F2" }} />
       </View>
     </SafeAreaView>
   );

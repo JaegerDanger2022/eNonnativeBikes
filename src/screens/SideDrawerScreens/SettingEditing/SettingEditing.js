@@ -17,19 +17,19 @@ const SettingEditing = () => {
           <Text style={{ marginHorizontal: 10 }}>In cycle</Text>
         </View>
         <View>
-          <ToggleSwitch names={"Promotions"} />
+          <ToggleSwitch name={"Promotions"} />
           <Divider style={{ height: 2 }} />
         </View>
         <View>
-          <ToggleSwitch names={"New features"} />
+          <ToggleSwitch name={"New features"} />
           <Divider style={{ height: 2 }} />
         </View>
         <View>
-          <ToggleSwitch names={"Recommended rides"} />
+          <ToggleSwitch name={"Recommended rides"} />
           <Divider style={{ height: 2 }} />
         </View>
         <View>
-          <ToggleSwitch names={"Partner Programs"} />
+          <ToggleSwitch name={"Partner Programs"} />
           <Divider style={{ height: 2 }} />
         </View>
       </View>

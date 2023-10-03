@@ -27,7 +27,7 @@ const Account = () => {
         </View>
       </View>
 
-      <Divider style={{ height: 10, backgroundColor: "#F5F4F2" }} />
+      <Divider style={{ height: 2, backgroundColor: "#F5F4F2" }} />
     </SafeAreaView>
   );
 };
