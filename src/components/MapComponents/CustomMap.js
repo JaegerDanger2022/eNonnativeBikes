@@ -12,7 +12,7 @@ import { Marker } from "react-native-maps";
 import { FAB, Portal, Provider } from "react-native-paper";
 const bikeIcon = require("../../../assets/images/bike/bicycle_5717145.png");
 
-const CustomMap = () => {
+const CustomMap = ({ handleNavigate }) => {
   const [state, setState] = useState({ open: false });
   const [mapRegion, setMapRegion] = useState({
     latitude: 7.732645028326621,
@@ -61,8 +61,8 @@ const CustomMap = () => {
           coordinate={item.location}
           title={item.title}
           description={item.description}
-          // onPress={() => handleMarkerPress(item.location)}
-          onPress={() => Alert.alert("hello")}
+          onPress={handleNavigate}
+          // onPress={() => Alert.alert("hello")}
         >
           {/* <Overlay style={{ width: 70, height: 70 }} opacity={0.5}> */}
           <Image source={bikeIcon} style={{ width: 70, height: 70 }} />
@@ -106,7 +106,7 @@ const CustomMap = () => {
       elementType: "geometry",
       stylers: [
         {
-          color: "#1e1e1e",
+          color: "red",
         },
       ],
     },
