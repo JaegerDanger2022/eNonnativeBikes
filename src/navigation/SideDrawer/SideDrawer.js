@@ -16,6 +16,7 @@ import RideDetailsNavigator from "./RideDetailsNavigator/RideDetailsNavigator";
 import SettingsDetailsNavigator from "./SettingsDetailsNavigator/SettingsDetailsNavigator";
 import SideDrawerNavigationIcon from "../../components/SideDrawerNavigationIcon/SideDrawerNavigationIcon";
 import Account from "../../components/SideDrawerScreenComponent/Account";
+import NoContentScreen from "../../screens/NoContent";
 
 const Drawer = createDrawerNavigator();
 
@@ -92,7 +93,7 @@ export default function SideDrawer() {
       />
       <Drawer.Screen
         name="Safety"
-        component={BottomTabNavigator}
+        component={NoContentScreen}
         options={{
           drawerLabel: () => (
             <SideDrawerItems label={"Safety"} icon={"shield"} />
@@ -123,7 +124,7 @@ export default function SideDrawer() {
       />
       <Drawer.Screen
         name="Legal"
-        component={BottomTabNavigator}
+        component={NoContentScreen}
         options={{
           drawerLabel: () => <SideDrawerItems label={"Legal"} icon={'clipboard'}/>,
           headerShown: true,
@@ -137,7 +138,7 @@ export default function SideDrawer() {
       />
       <Drawer.Screen
         name="About"
-        component={BottomTabNavigator}
+        component={NoContentScreen}
         options={{
           drawerLabel: () => <SideDrawerItems label={"About"} icon={'info'}/>,
           headerShown: true,

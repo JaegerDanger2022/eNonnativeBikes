@@ -7,7 +7,7 @@ import { Feather, Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { DrawerActions } from "@react-navigation/native"; // Import DrawerActions
 import { clearAllData } from "../../../app/utils/AsyncStorage/ClearData";
-import { Avatar, useTheme } from "react-native-paper";
+import {  useTheme } from "react-native-paper";
 
 const Map = () => {
   const theme = useTheme();
@@ -53,6 +53,7 @@ const Map = () => {
             left: 16,
           }}
         >
+          {/* search box */}
           <View
             style={{
               position: "absolute",
@@ -88,12 +89,13 @@ const Map = () => {
             )}
           </View>
           <View style={{ flexDirection: "column", gap: 10 }}>
+            {/* menubutton */}
             <View>
               <Pressable onPress={openDrawer}>
                 <MaterialCommunityIcons
                   name="microsoft-xbox-controller-menu"
                   size={40}
-                  color="black"
+                  color={theme.colors.primary}
                 />
               </Pressable>
             </View>
@@ -102,7 +104,8 @@ const Map = () => {
                 <Ionicons
                   name="md-search-circle-sharp"
                   size={40}
-                  color="black"
+                  color={theme.colors.primary}
+
                 />
               </Pressable>
             </View>
