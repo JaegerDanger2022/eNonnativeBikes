@@ -28,18 +28,19 @@ const RideSummary = ({
             alignContent: "center",
             padding: 20,
             backgroundColor: "white",
+            backgroundColor: "#C93D5D",
           }}
         >
           <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
             <View>
-              <FontAwesome name={startIcon} size={30} color="black" />
+              <FontAwesome name={startIcon} size={30} color="#006776" />
             </View>
             <View style={{ flexDirection: "column", alignItems: "center" }}>
               <View>
-                <Text style={{ fontSize: 17, fontWeight: "800" }}>
+                <Text style={{ fontSize: 20, fontWeight: "800" }}>
                   {address}
                 </Text>
-                <Text style={{ fontWeight: "500", color: "#6750A4" }}>
+                <Text style={{ fontWeight: "500", color: "white" }}>
                   {date}
                 </Text>
               </View>

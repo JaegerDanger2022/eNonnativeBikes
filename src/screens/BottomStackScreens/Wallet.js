@@ -10,18 +10,20 @@ import { AntDesign } from "@expo/vector-icons";
 
 const Wallet = () => {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#E0DADA" }}>
       <ScrollView>
         {/* <Card style={{ width: "100%", height: 292 }}> */}
         <View style={{ padding: 20 }}>
           <View style={{ flexDirection: "column", gap: 20 }}>
             <View>
-              <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+              <Text
+                style={{ fontSize: 20, fontWeight: "bold", color: "black" }}
+              >
                 Check Wallet
               </Text>
             </View>
             <Card
-              style={{ width: "100%", backgroundColor: "#F5F4F2", height: 130 }}
+              style={{ width: "100%", backgroundColor: "#C93E5E", height: 130 }}
             >
               <View
                 style={{
@@ -34,10 +36,20 @@ const Wallet = () => {
                 }}
               >
                 <View>
-                  <Text style={{ fontSize: 15, fontWeight: "300" }}>
+                  <Text
+                    style={{ fontSize: 15, fontWeight: "900", color: "white" }}
+                  >
                     Ride Cash
                   </Text>
-                  <Text style={{ fontSize: 25, fontWeight: "700" }}>GHC 0</Text>
+                  <Text
+                    style={{
+                      fontSize: 28,
+                      fontWeight: "900",
+                      color: "#056F7B",
+                    }}
+                  >
+                    GHC 0
+                  </Text>
                 </View>
 
                 <View>
@@ -51,7 +63,9 @@ const Wallet = () => {
             </Card>
             <View style={{ flexDirection: "row", gap: 20 }}>
               <View>
-                <Text style={{ fontSize: 20, fontWeight: "700" }}>
+                <Text
+                  style={{ fontSize: 20, fontWeight: "700", color: "black" }}
+                >
                   Payment methods
                 </Text>
               </View>
@@ -61,11 +75,11 @@ const Wallet = () => {
                 <Ionicons name="cash" size={24} color="green" />
               </View>
               <View>
-                <Text>Cash</Text>
+                <Text style={{ color: "black", fontWeight: "bold" }}>Cash</Text>
               </View>
             </View>
           </View>
-          <View style={{ marginVertical: 10 }}>
+          <View style={{ marginVertical: 10, color: "white" }}>
             <Button mode="contained" onPress={() => console.log("Pressed")}>
               Add payment method
             </Button>
@@ -77,14 +91,14 @@ const Wallet = () => {
         <View style={{ padding: 20 }}>
           <View style={{ flexDirection: "column", gap: 20 }}>
             <View>
-              <Text style={{ fontSize: 20, fontWeight: "700" }}>
+              <Text style={{ fontSize: 20, fontWeight: "700", color: "black" }}>
                 Ride Status
               </Text>
             </View>
             <Card
               style={{
                 width: "100%",
-                backgroundColor: "#F5F4F2",
+                backgroundColor: "#C93E5E",
                 height: 150,
                 padding: 15,
               }}
@@ -107,10 +121,18 @@ const Wallet = () => {
                     }}
                   >
                     <View>
-                      <EvilIcons name="user" size={30} color="black" />
+                      <EvilIcons name="user" size={30} color="#056F7B" />
                     </View>
                     <View>
-                      <Text>Personal</Text>
+                      <Text
+                        style={{
+                          fontSize: 15,
+                          fontWeight: "900",
+                          color: "white",
+                        }}
+                      >
+                        Personal
+                      </Text>
                     </View>
                   </View>
                 </View>
@@ -126,12 +148,26 @@ const Wallet = () => {
                     <SimpleLineIcons
                       name="screen-desktop"
                       size={30}
-                      color="black"
+                      color="#056F7B"
                     />
                   </View>
                   <View>
-                    <Text>Start using ride for business</Text>
-                    <Text style={{ fontSize: 10 }}>
+                    <Text
+                      style={{
+                        fontSize: 15,
+                        fontWeight: "900",
+                        color: "white",
+                      }}
+                    >
+                      Start using ride for business
+                    </Text>
+                    <Text
+                      style={{
+                        fontSize: 15,
+                        fontWeight: "900",
+                        color: "white",
+                      }}
+                    >
                       Turn on business travel features
                     </Text>
                   </View>
@@ -145,12 +181,14 @@ const Wallet = () => {
         <View style={{ padding: 20 }}>
           <View style={{ flexDirection: "column", gap: 20 }}>
             <View>
-              <Text style={{ fontSize: 20, fontWeight: "700" }}>Vouchers</Text>
+              <Text style={{ fontSize: 20, fontWeight: "700", color: "black" }}>
+                Vouchers
+              </Text>
             </View>
             <Card
               style={{
                 width: "100%",
-                backgroundColor: "#F5F4F2",
+                backgroundColor: "#C93E5E",
                 height: 150,
                 padding: 15,
               }}
@@ -173,10 +211,18 @@ const Wallet = () => {
                     }}
                   >
                     <View>
-                      <AntDesign name="idcard" size={24} color="black" />
+                      <AntDesign name="idcard" size={24} color="#056F7B" />
                     </View>
                     <View>
-                      <Text>Vouchers</Text>
+                      <Text
+                        style={{
+                          fontSize: 15,
+                          fontWeight: "900",
+                          color: "white",
+                        }}
+                      >
+                        Vouchers
+                      </Text>
                     </View>
                   </View>
                 </View>
@@ -184,15 +230,23 @@ const Wallet = () => {
                 <View
                   style={{
                     flexDirection: "row",
-                    gap: 20,
+                    gap: 10,
                     alignItems: "center",
                   }}
                 >
                   <View>
-                    <FontAwesome5 name="plus" size={30} color="black" />
+                    <FontAwesome5 name="plus" size={30} color="#056F7B" />
                   </View>
                   <View>
-                    <Text>Add Voucher code</Text>
+                    <Text
+                      style={{
+                        fontSize: 15,
+                        fontWeight: "900",
+                        color: "white",
+                      }}
+                    >
+                      Add Voucher code
+                    </Text>
                   </View>
                 </View>
               </View>
@@ -203,14 +257,14 @@ const Wallet = () => {
         <View style={{ padding: 20 }}>
           <View style={{ flexDirection: "column", gap: 20 }}>
             <View>
-              <Text style={{ fontSize: 20, fontWeight: "700" }}>
+              <Text style={{ fontSize: 20, fontWeight: "900", color: "black" }}>
                 Promotions
               </Text>
             </View>
             <Card
               style={{
                 width: "100%",
-                backgroundColor: "#F5F4F2",
+                backgroundColor: "#C93E5E",
                 height: 150,
                 padding: 15,
               }}
@@ -234,10 +288,18 @@ const Wallet = () => {
                   }}
                 >
                   <View>
-                    <FontAwesome5 name="plus" size={30} color="black" />
+                    <FontAwesome5 name="plus" size={30} color="#056F7B" />
                   </View>
                   <View>
-                    <Text>Add Promo code</Text>
+                    <Text
+                      style={{
+                        fontSize: 15,
+                        fontWeight: "900",
+                        color: "white",
+                      }}
+                    >
+                      Add Promo code
+                    </Text>
                   </View>
                 </View>
               </View>
@@ -248,12 +310,14 @@ const Wallet = () => {
         <View style={{ padding: 20 }}>
           <View style={{ flexDirection: "column", gap: 20 }}>
             <View>
-              <Text style={{ fontSize: 20, fontWeight: "700" }}>Referrals</Text>
+              <Text style={{ fontSize: 20, fontWeight: "700", color: "black" }}>
+                Referrals
+              </Text>
             </View>
             <Card
               style={{
                 width: "100%",
-                backgroundColor: "#F5F4F2",
+                backgroundColor: "#C93E5E",
                 height: 150,
                 padding: 15,
               }}
@@ -277,15 +341,27 @@ const Wallet = () => {
                   }}
                 >
                   <View>
-                    <FontAwesome5 name="plus" size={30} color="black" />
+                    <FontAwesome5 name="plus" size={30} color="#056F7B" />
                   </View>
                   <View>
-                    <Text>Add Promo code</Text>
+                    <Text style={{ color: "white", fontWeight: "900" }}>
+                      Add Promo code
+                    </Text>
                   </View>
                 </View>
               </View>
             </Card>
           </View>
+        </View>
+        {/* =================== */}
+        <View style={{ padding: 20 }}>
+          {/* <View style={{ flexDirection: "column", gap: 20 }}>
+            <View>
+              <Text style={{ fontSize: 20, fontWeight: "700", color: "black" }}>
+                Live @copy 2023
+              </Text>
+            </View>
+          </View> */}
         </View>
       </ScrollView>
     </SafeAreaView>

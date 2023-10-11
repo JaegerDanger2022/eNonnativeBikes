@@ -10,7 +10,7 @@ const RideDetail = ({ navigation }) => {
         startIcon="bicycle"
         address={"Virginia Walk"}
         date={"24th September, 2023"}
-        amount={50.0}
+        amount={60.0}
       />
     </View>
   );

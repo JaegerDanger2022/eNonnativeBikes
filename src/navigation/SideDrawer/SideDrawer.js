@@ -17,6 +17,7 @@ import SettingsDetailsNavigator from "./SettingsDetailsNavigator/SettingsDetails
 import SideDrawerNavigationIcon from "../../components/SideDrawerNavigationIcon/SideDrawerNavigationIcon";
 import Account from "../../components/SideDrawerScreenComponent/Account";
 import NoContentScreen from "../../screens/NoContent";
+import AboutDetailsNavigator from "./AboutDetailsNavigator/AboutDetailsNavigator";
 
 const Drawer = createDrawerNavigator();
 
@@ -28,8 +29,9 @@ export default function SideDrawer() {
       screenOptions={{
         drawerStyle: {
           width: 320,
+          backgroundColor: "#E0DADA",
         },
-        drawerType:'front'
+        drawerType: "front",
       }}
     >
       {/* DRAWER TITLE */}
@@ -49,7 +51,7 @@ export default function SideDrawer() {
         name="Maps"
         component={BottomTabNavigator}
         options={{
-          drawerLabel: () => <SideDrawerItems label={"Map"} icon={'map'} />,
+          drawerLabel: () => <SideDrawerItems label={"Map"} icon={"map"} />,
           headerShown: false,
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
@@ -109,24 +111,12 @@ export default function SideDrawer() {
       />
 
       <Drawer.Screen
-        name="Settings"
-        component={SettingsDetailsNavigator}
-        options={{
-          drawerLabel: () => <SideDrawerItems label={"Settings"} icon={"settings"}/>,
-          headerShown: false,
-          headerLeft: () => (
-            <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
-              <SideDrawerNavigationIcon iconName={"arrowleft"} />
-            </TouchableOpacity>
-          ),
-          headerTitle: "",
-        }}
-      />
-      <Drawer.Screen
         name="Legal"
         component={NoContentScreen}
         options={{
-          drawerLabel: () => <SideDrawerItems label={"Legal"} icon={'clipboard'}/>,
+          drawerLabel: () => (
+            <SideDrawerItems label={"Legal"} icon={"clipboard"} />
+          ),
           headerShown: true,
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
@@ -138,10 +128,10 @@ export default function SideDrawer() {
       />
       <Drawer.Screen
         name="About"
-        component={NoContentScreen}
+        component={AboutDetailsNavigator}
         options={{
-          drawerLabel: () => <SideDrawerItems label={"About"} icon={'info'}/>,
-          headerShown: true,
+          drawerLabel: () => <SideDrawerItems label={"About"} icon={"info"} />,
+          headerShown: false,
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.navigate("Maps")}>
               <SideDrawerNavigationIcon iconName={"arrowleft"} />

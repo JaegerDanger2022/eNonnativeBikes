@@ -6,13 +6,13 @@ const ToggleSwitch = ({ name, belowname }) => {
   const [isSwitchOn, setIsSwitchOn] = React.useState(false);
   const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
   return (
-    // <TouchableOpacity onPress={onPress}>
+    // <TouchableOpacity onPress={onPress}>  backgroundColor: "#F2D3D3"
     <View
       style={{
         flexDirection: "row",
         alignItems: "stretch",
         justifyContent: "space-between",
-        backgroundColor: "white",
+        backgroundColor: "#C93D5D",
         height: 80,
         padding: 20,
         width: "100%",

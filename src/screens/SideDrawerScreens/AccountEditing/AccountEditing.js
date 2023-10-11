@@ -6,7 +6,7 @@ import { TouchableOpacity } from "react-native";
 
 const AccountEditing = ({ navigation }) => {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#E0DADA" }}>
       <View style={{ padding: 20 }}>
         <Text style={{ fontWeight: "bold", fontSize: 25 }}>Edit profile</Text>
       </View>

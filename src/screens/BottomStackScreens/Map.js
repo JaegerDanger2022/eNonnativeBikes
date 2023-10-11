@@ -1,13 +1,13 @@
-import { View, Text, SafeAreaView, Pressable, TextInput } from "react-native";
+import { View, Text, SafeAreaView, Pressable, StyleSheet } from "react-native";
 import React, { useEffect, useState } from "react";
-import CustomMap from "../../components/MapComponents/CustomMap";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-
-import { Feather, Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { DrawerActions } from "@react-navigation/native"; // Import DrawerActions
 import { clearAllData } from "../../../app/utils/AsyncStorage/ClearData";
-import {  useTheme } from "react-native-paper";
+import { useTheme } from "react-native-paper";
+import { Image } from "react-native";
+
+import CustomMap from "../../components/MapComponents/CustomMap";
 
 const Map = () => {
   const theme = useTheme();
@@ -15,11 +15,6 @@ const Map = () => {
   const [searchVisible, setSearchVisible] = useState(false);
 
   const [searchText, setSearchText] = useState("");
-
-  const [search, setSearch] = useState("");
-  const toggleSearch = () => {
-    setSearchVisible(!searchVisible);
-  };
 
   useEffect(() => {
     let timer;
@@ -42,77 +37,97 @@ const Map = () => {
   };
 
   return (
-    <View style={{ flex: 1 }}>
-      <View style={{ flex: 1 }}>
-        <CustomMap />
+    <>
+      <SafeAreaView style={{ flex: 1 }}>
         <View
           style={{
-            position: "absolute",
-            zIndex: 10,
-            top: 80,
-            left: 16,
+            backgroundColor: "#008A9A",
+            width: "100%",
+            height: "100%",
           }}
         >
-          {/* search box */}
           <View
             style={{
-              position: "absolute",
-              flexDirection: "row",
-              alignItems: "center",
-              left: 25,
-              top: -60,
-              padding: 10,
+              // backgroundColor: "green",
+              width: "100%",
+              height: "18%",
+              overflow: "hidden",
             }}
           >
-            {searchVisible && (
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  backgroundColor: "white",
-                  borderRadius: 20,
-                }}
-              >
-                <Feather name="search" size={20} color="black" />
-                <TextInput
-                  value={search}
-                  onChangeText={(text) => setSearch(text)}
-                  placeholder="search"
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+                padding: 10,
+                overflow: "hidden",
+              }}
+            >
+              <View>
+                <Image
+                  source={require("../../../assets/images/enonnativeLogo.png")}
                   style={{
-                    fontSize: 15,
-                    width: 300,
-                    borderRadius: 10,
+                    width: 50,
                     height: 50,
+                    backgroundColor: "white",
+                    borderRadius: 50,
                   }}
                 />
               </View>
-            )}
+              <Text
+                style={{ fontSize: 20, fontWeight: "bold", color: "white" }}
+              >
+                Good morning, Boto!
+              </Text>
+            </View>
+            <View>
+              {/* ======================= */}
+              <View
+                style={{
+                  flexDirection: "flex",
+                  gap: 10,
+                  marginHorizontal: 16,
+                  marginVertical: 20,
+                }}
+              >
+                {/* menubutton */}
+                <View>
+                  <Pressable onPress={openDrawer}>
+                    <MaterialCommunityIcons
+                      name="microsoft-xbox-controller-menu"
+                      size={40}
+                      color="#FFFFFF"
+                    />
+                  </Pressable>
+                </View>
+                {/* <View>
+                  <Pressable onPress={toggleSearch}>
+                    <Ionicons
+                      name="md-search-circle-sharp"
+                      size={40}
+                      color={theme.colors.primary}
+                    />
+                  </Pressable>
+                </View> */}
+              </View>
+            </View>
           </View>
-          <View style={{ flexDirection: "column", gap: 10 }}>
-            {/* menubutton */}
-            <View>
-              <Pressable onPress={openDrawer}>
-                <MaterialCommunityIcons
-                  name="microsoft-xbox-controller-menu"
-                  size={40}
-                  color={theme.colors.primary}
-                />
-              </Pressable>
-            </View>
-            <View>
-              <Pressable onPress={toggleSearch}>
-                <Ionicons
-                  name="md-search-circle-sharp"
-                  size={40}
-                  color={theme.colors.primary}
-
-                />
-              </Pressable>
-            </View>
+          {/* Map */}
+          <View
+            style={{
+              width: "100%",
+              height: "75%",
+              borderTopRightRadius: 20,
+              borderTopLeftRadius: 25,
+              overflow: "hidden",
+            }}
+          >
+            <CustomMap />
+            {/* <Test /> */}
           </View>
         </View>
-      </View>
-    </View>
+      </SafeAreaView>
+    </>
   );
 };
 

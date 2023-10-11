@@ -25,12 +25,12 @@ const SideDrawerItems = ({ label, iconName, icon }) => {
           </View>
           <View>
             <Text>
-              <MaterialCommunityIcons name={iconName} size={24} color="black" />
+              <MaterialCommunityIcons name={iconName} size={24} color="green" />
               <Feather name={icon} size={24} color="black" />
             </Text>
           </View>
         </View>
-        <Divider style={{ height: 2, backgroundColor: "#F5F4F2" }} />
+        <Divider style={{ height: 2, backgroundColor: "#008A9A" }} />
       </View>
     </SafeAreaView>
   );

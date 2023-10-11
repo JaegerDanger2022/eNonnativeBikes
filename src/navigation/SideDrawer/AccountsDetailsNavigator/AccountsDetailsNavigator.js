@@ -8,6 +8,11 @@ import AccountDetail from "../../../screens/DrawerScreen/AccountDetail";
 import AccountEditing from "../../../screens/SideDrawerScreens/AccountEditing/AccountEditing";
 import AccountUpdate from "../../../screens/SideDrawerScreens/AccountEditing/AccountUpdate/AccountUpdate";
 import SideDrawerNavigationIcon from "../../../components/SideDrawerNavigationIcon/SideDrawerNavigationIcon";
+import AccountLanguage from "../../../screens/SideDrawerScreens/AccountEditing/AccountLanguage/AccountLanguage";
+import AccontHomeLocation from "../../../screens/SideDrawerScreens/AccountEditing/AccontHomeLocation";
+import AccountWork from "../../../screens/SideDrawerScreens/AccountEditing/AccountWork";
+import AccountCommunication from "../../../screens/SideDrawerScreens/AccountCommunication/AccountCommunication";
+import AccountCommunicationProduct from "../../../screens/SideDrawerScreens/AccountCommunication/AccountCommunicationProduct";
 
 const Account = createStackNavigator();
 
@@ -28,6 +33,9 @@ export default function AccountDetailsNavigator() {
               <Ionicons name="menu" size={30} color="black" />
             </TouchableOpacity>
           ),
+          headerStyle: {
+            backgroundColor: "#007481",
+          },
         }}
       />
       <Account.Group
@@ -37,10 +45,74 @@ export default function AccountDetailsNavigator() {
               <SideDrawerNavigationIcon iconName={"arrowleft"} />
             </TouchableOpacity>
           ),
+          headerStyle: {
+            backgroundColor: "#A45A5A",
+          },
         }}
       >
-        <Account.Screen name="Edit" component={AccountEditing} />
-        <Account.Screen name="Update Your Name" component={AccountUpdate} />
+        <Account.Screen
+          name="Edit"
+          component={AccountEditing}
+          options={{
+            headerStyle: {
+              backgroundColor: "#007481",
+            },
+          }}
+        />
+        <Account.Screen
+          name="Update Your Name"
+          component={AccountUpdate}
+          options={{
+            headerStyle: {
+              backgroundColor: "#007481",
+            },
+          }}
+        />
+        <Account.Screen
+          name="Languages"
+          component={AccountLanguage}
+          options={{
+            headerStyle: {
+              backgroundColor: "#007481",
+            },
+          }}
+        />
+        <Account.Screen
+          name="location"
+          component={AccontHomeLocation}
+          options={{
+            headerStyle: {
+              backgroundColor: "#007481",
+            },
+          }}
+        />
+        <Account.Screen
+          name="work"
+          component={AccountWork}
+          options={{
+            headerStyle: {
+              backgroundColor: "#007481",
+            },
+          }}
+        />
+        <Account.Screen
+          name="communication"
+          component={AccountCommunication}
+          options={{
+            headerStyle: {
+              backgroundColor: "#007481",
+            },
+          }}
+        />
+        <Account.Screen
+          name="product"
+          component={AccountCommunicationProduct}
+          options={{
+            headerStyle: {
+              backgroundColor: "#007481",
+            },
+          }}
+        />
       </Account.Group>
       {/* End Of Accounting Details */}
     </Account.Navigator>

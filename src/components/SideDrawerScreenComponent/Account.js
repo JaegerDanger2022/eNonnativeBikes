@@ -23,11 +23,11 @@ const Account = () => {
           >
             UserName
           </Text>
-          <Text> +233 0467782778 </Text>
+          <Text style={{ color: "#C94160" }}> +233 0467782778 </Text>
         </View>
       </View>
 
-      <Divider style={{ height: 2, backgroundColor: "#F5F4F2" }} />
+      <Divider style={{ height: 2, backgroundColor: "#008A9A" }} />
     </SafeAreaView>
   );
 };

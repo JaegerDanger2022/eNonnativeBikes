@@ -4,6 +4,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { Ionicons } from "@expo/vector-icons";
 import SettingDetail from "../../../screens/DrawerScreen/SettingDetail";
 import SettingEditing from "../../../screens/SideDrawerScreens/SettingEditing/SettingEditing";
+import Settings from "../../../screens/BottomStackScreens/Settings";
 // import SettingDetail from "../../../screens/DrawerScreen/SettingDetail";
 // import SettingEditing from "../../../screens/SideDrawerScreens/SettingEditing/SettingEditing";
 
@@ -26,7 +27,8 @@ export default function SettingsDetailsNavigator() {
               <Ionicons name="menu" size={30} color="black" />
             </TouchableOpacity>
           ),
-          headerTitle:'Settings'
+          headerTitle: "Settings",
+          headerShown: false,
         }}
       />
       <Setting.Group

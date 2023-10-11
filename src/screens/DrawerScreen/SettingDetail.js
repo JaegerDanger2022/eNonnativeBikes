@@ -8,17 +8,18 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../../app/utils/firebaseConfig";
 
 const SettingDetail = ({ navigation }) => {
-  const theme = useTheme() 
+  const theme = useTheme();
   // array to hold options
   // const OPTIONS = [
   //   {name:'', belowNames:'', switch:false,}
   // ]
   return (
-    <SafeAreaView style={{ flex: 1,  backgroundColor:theme.colors.background }}> 
-      <View>
-        <ToggleSwitch name={"Display Traffic"} />
+    <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.background }}>
+      <View style={{ padding: 15 }}>
+        <Text style={{ fontSize: 40 }}>Settings</Text>
       </View>
-      <Divider style={{ height: 2, width: 390, alignSelf: "center" }} />
+      <Divider style={{ height: 5, width: 390, alignSelf: "center" }} />
+
       <View>
         <ToggleSwitch name={"App Language"} belowNames={"English"} />
       </View>
@@ -31,10 +32,7 @@ const SettingDetail = ({ navigation }) => {
       </View>
       <Divider style={{ height: 2, width: 390, alignSelf: "center" }} />
       <View>
-        <ToggleSwitch
-          name={"Share my location"}
-          belowNames={"Not neccesary"}
-        />
+        <ToggleSwitch name={"Share my location"} belowNames={"Not neccesary"} />
       </View>
       <Divider style={{ height: 2, width: 390, alignSelf: "center" }} />
       <View>
@@ -45,17 +43,23 @@ const SettingDetail = ({ navigation }) => {
         </TouchableOpacity>
       </View>
       <Divider style={{ height: 2, width: 390, alignSelf: "center" }} />
-      <TouchableOpacity onPress={()=>signOut(auth).catch(err => console.log(err))}> 
-      <SettingsTabs name={'Logout'} nameColor={'red'} fontFamily={'Lexend_700Bold'}/>
-      </TouchableOpacity>
+      <View>
+        <TouchableOpacity
+          onPress={() => signOut(auth).catch((err) => console.log(err))}
+        >
+          <SettingsTabs
+            name={"Logout"}
+            nameColor={"red"}
+            fontFamily={"Lexend_700Bold"}
+          />
+        </TouchableOpacity>
+      </View>
+      <Divider style={{ height: 2, width: 390, alignSelf: "center" }} />
     </SafeAreaView>
   );
 };
 
 export default SettingDetail;
-
- 
- 
 
 const SettingsTabs = ({ name, nameColor, fontFamily, belowNames }) => {
   return (
@@ -77,12 +81,13 @@ const SettingsTabs = ({ name, nameColor, fontFamily, belowNames }) => {
           justifyContent: "center",
         }}
       >
-        <Text style={{ fontSize: 20, color:nameColor, fontFamily:fontFamily }}>{name}</Text>
+        <Text
+          style={{ fontSize: 20, color: nameColor, fontFamily: fontFamily }}
+        >
+          {name}
+        </Text>
         <Text style={{ fontSize: 15 }}>{belowNames}</Text>
       </View>
-     
     </View>
-    // </TouchableOpacity>
   );
 };
- 

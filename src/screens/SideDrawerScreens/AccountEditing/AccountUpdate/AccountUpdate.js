@@ -7,11 +7,17 @@ const AccountUpdate = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={{ padding: 20 }}>
-        <Text style={{ fontSize: 20, fontWeight: "600" }}>
+        <Text
+          style={{
+            fontSize: 20,
+            fontWeight: "600",
+            backgroundColor: "#E0DADA",
+          }}
+        >
           Please enter your name as it appears on your ID or Passport.
         </Text>
       </View>
-      <View style={{ flexDirection: "column", gap: 10, padding: 20 }}>
+      <View style={{ flexDirection: "column", gap: 10, alignItems: "center" }}>
         <CustomTextInput label={"First Name"} />
         <CustomTextInput label={"Last Name"} />
       </View>

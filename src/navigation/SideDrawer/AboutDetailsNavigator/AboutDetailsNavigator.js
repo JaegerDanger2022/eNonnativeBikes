@@ -1,20 +1,20 @@
 import { DrawerActions, useNavigation } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { TouchableOpacity } from "react-native-gesture-handler";
+
 import { Ionicons } from "@expo/vector-icons";
-import RideDetails from "../../../components/RidesComponents/RideDetails";
-import RideDetail from "../../../screens/DrawerScreen/RideDetail";
+import AboutDetail from "../../../screens/DrawerScreen/AboutDetail";
 
-const Ride = createStackNavigator();
+const About = createStackNavigator();
 
-export default function RideDetailsNavigator() {
+export default function AboutDetailsNavigator() {
   const navigation = useNavigation();
   return (
-    <Ride.Navigator initialRouteName="Ride">
+    <About.Navigator initialRouteName="About">
       {/* Account */}
-      <Ride.Screen
-        name="Ride"
-        component={RideDetail}
+      <About.Screen
+        name="About"
+        component={AboutDetail}
         options={{
           headerLeft: () => (
             <TouchableOpacity
@@ -27,31 +27,19 @@ export default function RideDetailsNavigator() {
           headerStyle: {
             backgroundColor: "#007481",
           },
+          headerShown: true,
         }}
       />
-      <Ride.Group
+      {/* <About.Group
         screenOptions={{
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.goBack()}>
               <SideDrawerNavigationIcon iconName={"arrowleft"} />
             </TouchableOpacity>
           ),
-          headerStyle: {
-            backgroundColor: "#007481",
-          },
         }}
-      />
-      <Ride.Screen
-        name="RideDetail"
-        component={RideDetails}
-        options={{
-          headerStyle: {
-            backgroundColor: "#007481",
-          },
-        }}
-      />
-
+      ></About.Group> */}
       {/* End Of Payment Details */}
-    </Ride.Navigator>
+    </About.Navigator>
   );
 }

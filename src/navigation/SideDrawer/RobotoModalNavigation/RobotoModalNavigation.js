@@ -1,20 +1,20 @@
-import { DrawerActions, useNavigation } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import SideDrawerNavigationIcon from "../../../components/SideDrawerNavigationIcon/SideDrawerNavigationIcon";
+import { TouchableOpacity } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
+import { DrawerActions, useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
-import PaymentDetail from "../../../screens/DrawerScreen/PaymentDetail";
+import RobotoModalDetails from "../../../screens/DrawerScreen/RobotoModalDetails";
 
-const Payment = createStackNavigator();
+const Roboto = createStackNavigator();
 
-export default function PaymentDetailsNavigator() {
+export default function RobotoModalNavigation() {
   const navigation = useNavigation();
   return (
-    <Payment.Navigator initialRouteName="Payment">
+    <Roboto.Navigator initialRouteName="modal">
       {/* Account */}
-      <Payment.Screen
-        name="Payment"
-        component={PaymentDetail}
+      <Roboto.Screen
+        name="modal"
+        component={RobotoModalDetails}
         options={{
           headerLeft: () => (
             <TouchableOpacity
@@ -24,12 +24,10 @@ export default function PaymentDetailsNavigator() {
               <Ionicons name="menu" size={30} color="black" />
             </TouchableOpacity>
           ),
-          headerStyle: {
-            backgroundColor: "#007481",
-          },
+          headerShown: false,
         }}
       />
-      <Payment.Group
+      {/* <Roboto.Group
         screenOptions={{
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -37,8 +35,11 @@ export default function PaymentDetailsNavigator() {
             </TouchableOpacity>
           ),
         }}
-      ></Payment.Group>
-      {/* End Of Payment Details */}
-    </Payment.Navigator>
+      >
+        <Roboto.Screen name="Edit" component={AccountEditing} />
+        <Roboto.Screen name="Update Your Name" component={AccountUpdate} />
+      </Roboto.Group> */}
+      {/* End Of Accounting Details */}
+    </Roboto.Navigator>
   );
 }

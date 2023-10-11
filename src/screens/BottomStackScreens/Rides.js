@@ -8,8 +8,9 @@ const Rides = ({ navigation }) => {
     navigation.navigate("RideDetails");
   };
   const theme = useTheme();
+  //  backgroundColor: theme.colors.background;
   return (
-    <View style={{ flex: 1, backgroundColor: theme.colors.background }}>
+    <View style={{ flex: 1, backgroundColor: "#E0DADA" }}>
       <RideSummary
         startIcon="bicycle"
         address={"Virginia Walk"}

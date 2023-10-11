@@ -14,10 +14,10 @@ import { TouchableOpacity } from "react-native";
 
 const AccountDetail = ({ navigation }) => {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#E0DADA" }}>
       <ScrollView>
         {/* ===================================== */}
-        <Card>
+        <Card style={{ backgroundColor: "#C93D5D" }}>
           <View
             style={{
               flexDirection: "column",
@@ -35,7 +35,7 @@ const AccountDetail = ({ navigation }) => {
               </Text>
             </View>
             <View>
-              <Text style={{ fontSize: 17 }}>+265656666</Text>
+              <Text style={{ color: "wheat", fontSize: 17 }}>+265656666</Text>
             </View>
             <View
               style={{ flexDirection: "row", alignItems: "center", gap: 4 }}
@@ -44,7 +44,7 @@ const AccountDetail = ({ navigation }) => {
                 <Feather name="star" size={15} color="green" />
               </View>
               <View>
-                <Text>9.0</Text>
+                <Text style={{ color: "wheat" }}>9.0</Text>
               </View>
             </View>
             <TouchableOpacity onPress={() => navigation.navigate("Edit")}>
@@ -74,8 +74,8 @@ const AccountDetail = ({ navigation }) => {
             }}
           >
             <View style={{ flexDirection: "row", gap: 10 }}>
-              <FontAwesome5 name="envelope" size={25} color="black" />
-              <Text style={{ fontSize: 18 }}>@gmail.com</Text>
+              <FontAwesome5 name="envelope" size={25} color="green" />
+              <Text style={{ color: "#007481", fontSize: 18 }}>@gmail.com</Text>
             </View>
 
             <View>
@@ -84,56 +84,88 @@ const AccountDetail = ({ navigation }) => {
           </View>
         </Card>
         {/* ===================== */}
-        <Card style={{ marginVertical: 15 }}>
+        <Card style={{ marginVertical: 15, backgroundColor: "#C93D5D" }}>
           <View style={{ flexDirection: "column", gap: 20, padding: 15 }}>
             <View>
-              <Text style={{ fontSize: 27, fontWeight: "bold" }}>Places</Text>
+              <Text
+                style={{ color: "white", fontSize: 27, fontWeight: "bold" }}
+              >
+                Places
+              </Text>
             </View>
-            <View
-              style={{ flexDirection: "row", gap: 10, alignItems: "center" }}
-            >
-              <AntDesign name="home" size={25} color="black" />
-              <Text style={{ fontSize: 18 }}>Home</Text>
-            </View>
+            <TouchableOpacity onPress={() => navigation.navigate("work")}>
+              <View
+                style={{ flexDirection: "row", gap: 10, alignItems: "center" }}
+              >
+                <AntDesign name="home" size={25} color="black" />
+                <Text style={{ color: "white", fontSize: 18 }}>Home</Text>
+              </View>
+            </TouchableOpacity>
             <Divider />
-            <View
-              style={{ flexDirection: "row", gap: 10, alignItems: "center" }}
-            >
-              <Entypo name="location-pin" size={25} color="black" />
-              <Text style={{ fontSize: 18 }}>Location</Text>
-            </View>
+            <TouchableOpacity onPress={() => navigation.navigate("location")}>
+              <View
+                style={{ flexDirection: "row", gap: 10, alignItems: "center" }}
+              >
+                <Entypo name="location-pin" size={25} color="black" />
+                <Text style={{ color: "white", fontSize: 18 }}>Location</Text>
+              </View>
+            </TouchableOpacity>
           </View>
         </Card>
         {/* =============================== */}
-        <Card style={{ marginVertical: 5 }}>
+        <Card style={{ marginVertical: 5, backgroundColor: "#C93D5D" }}>
           <View style={{ flexDirection: "column", gap: 20, padding: 15 }}>
             <View style={{ flexDirection: "column", gap: 10 }}>
-              <Text style={{ fontSize: 18 }}>Languages</Text>
-              <Text style={{ fontSize: 18 }}>English-US</Text>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("Languages")}
+              >
+                <Text style={{ color: "white", fontSize: 18 }}>Languages</Text>
+              </TouchableOpacity>
+              <Text style={{ color: "white", fontSize: 18 }}>English-US</Text>
             </View>
             <Divider />
-            <View
-              style={{ flexDirection: "row", gap: 10, alignItems: "center" }}
+            <TouchableOpacity
+              onPress={() => navigation.navigate("communication")}
             >
-              <Text style={{ fontSize: 18 }}>Communication</Text>
-            </View>
+              <View
+                style={{ flexDirection: "row", gap: 10, alignItems: "center" }}
+              >
+                <Text style={{ color: "white", fontSize: 18 }}>
+                  Communication
+                </Text>
+              </View>
+            </TouchableOpacity>
           </View>
         </Card>
         {/* ======================= */}
-        <Card style={{ marginVertical: 5, height: "30%" }}>
+        <Card
+          style={{
+            marginVertical: 10,
+            height: "30%",
+            backgroundColor: "#C93D5D",
+          }}
+        >
           <View style={{ flexDirection: "column", gap: 20, padding: 15 }}>
             <View
               style={{ flexDirection: "row", gap: 10, alignItems: "center" }}
             >
-              <AntDesign name="logout" size={25} color="black" />
-              <Text style={{ fontSize: 18, fontWeight: "600" }}>Log out</Text>
+              <AntDesign name="logout" size={25} color="red" />
+              <Text style={{ color: "white", fontSize: 18, fontWeight: "600" }}>
+                Log out
+              </Text>
             </View>
             <Divider />
             <View
               style={{ flexDirection: "row", gap: 10, alignItems: "center" }}
             >
-              <AntDesign name="delete" size={25} color="black" />
-              <Text style={{ fontSize: 18, fontWeight: "600" }}>
+              <AntDesign name="delete" size={25} color="green" />
+              <Text
+                style={{
+                  fontSize: 18,
+                  fontWeight: "600",
+                  color: "white",
+                }}
+              >
                 Delete Account
               </Text>
             </View>
