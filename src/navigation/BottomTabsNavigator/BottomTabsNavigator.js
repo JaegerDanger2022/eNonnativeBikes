@@ -32,8 +32,6 @@ export default function BottomTabNavigator({ navigation, route }) {
           height: "11%",
           width: "100%",
           position: "absolute",
-          // borderTopLeftRadius: "10%", //back on
-          // borderTopRightRadius: "10%", //back on
           paddingBottom: "5%",
           elevation: 0,
           borderTopRightRadius: Platform.select({
@@ -92,7 +90,6 @@ export default function BottomTabNavigator({ navigation, route }) {
             headerTitle: "Rides",
             tabBarItemStyle: {
               backgroundColor: "white",
-              // borderTopRightRadius: 20,  // Back on
               zIndex: 100,
               borderTopRightRadius: Platform.select({
                 ios: 20,
@@ -101,7 +98,6 @@ export default function BottomTabNavigator({ navigation, route }) {
             },
           }}
         />
-        {/* ======================= */}
         <Tab.Screen
           name="Up"
           component={RobotoModalNavigation}
@@ -138,10 +134,7 @@ export default function BottomTabNavigator({ navigation, route }) {
                       width: "25%",
                       height: "28%",
                       left: "95%", // Initial -83
-                      // zIndex: -10,
                       bottom: "72%",
-
-                      // borderBottomStartRadius: 100,
                     }}
                   ></View>
                   {/* Left BOX */}
@@ -152,9 +145,7 @@ export default function BottomTabNavigator({ navigation, route }) {
                       width: "28%",
                       height: "28%",
                       right: "95%", // Initial -83
-                      // zIndex: -100,
                       bottom: "72%",
-                      // borderBottomStartRadius: 100,
                     }}
                   ></View>
                 </View>
@@ -166,7 +157,6 @@ export default function BottomTabNavigator({ navigation, route }) {
               height: "100%",
               borderBottomStartRadius: 80,
               borderBottomEndRadius: 80,
-              // width: "10vw",
             },
           }}
         />
@@ -190,11 +180,7 @@ export default function BottomTabNavigator({ navigation, route }) {
             headerShown: false,
             tabBarLabel: "Wallet",
             tabBarItemStyle: {
-              // backgroundColor: "white",
               backgroundColor: "white",
-
-              // borderTopLeftRadius: "20%", //back on
-              // zIndex:100,
               borderTopLeftRadius: Platform.select({
                 ios: 20,
                 android: 20,

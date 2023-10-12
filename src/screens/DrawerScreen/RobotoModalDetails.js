@@ -1,15 +1,6 @@
-import {
-  View,
-  Text,
-  SafeAreaView,
-  Button,
-  Alert,
-  Image,
-  Platform,
-} from "react-native";
+import { View, Text, SafeAreaView, Image, Platform } from "react-native";
 import React from "react";
 import { useState } from "react";
-import { Modal, TextInput } from "react-native-paper";
 import CustomTextInput from "../../components/CustomTextInput";
 import { Entypo } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
@@ -21,7 +12,6 @@ const RobotoModalDetails = ({ navigation }) => {
   const hide = () => setVisibility(false);
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      {/* ======================================= */}
       <View
         style={{
           width: "100%",
@@ -34,7 +24,6 @@ const RobotoModalDetails = ({ navigation }) => {
             position: "absolute",
             width: "40%",
             height: "40%",
-            // marginVertical: 45,
             marginHorizontal: 350,
             zIndex: 100,
             marginVertical: Platform.select({
@@ -54,19 +43,20 @@ const RobotoModalDetails = ({ navigation }) => {
           />
         </View>
         {/* shapes around around bot*/}
-
         <View
           style={{
             position: "absolute",
             backgroundColor: "#8CB6FF", // 8CB6FF
-            width: "6.5%",
             height: "2%",
             marginVertical: 40,
-            // marginHorizontal: 240,
             zIndex: 20,
             marginHorizontal: Platform.select({
               ios: 230,
               android: 240,
+            }),
+            width: Platform.select({
+              ios: "5%",
+              android: "6.5%",
             }),
           }}
         ></View>
@@ -77,7 +67,6 @@ const RobotoModalDetails = ({ navigation }) => {
             width: "7%",
             height: "2%",
             marginVertical: 40,
-            // marginHorizontal: 156,
             zIndex: 20,
             marginHorizontal: Platform.select({
               ios: 136,
@@ -90,7 +79,7 @@ const RobotoModalDetails = ({ navigation }) => {
             width: "22%",
             height: "10%",
             position: "absolute",
-            backgroundColor: "black", //8CB6FF
+            backgroundColor: "#8CB6FF", //8CB6FF
             borderBottomStartRadius: 50,
             borderBottomEndRadius: 50,
             zIndex: 20,
@@ -118,11 +107,12 @@ const RobotoModalDetails = ({ navigation }) => {
             }}
           />
         </View>
-        {/* shapes around around bot*/}
+        {/* shapes around bot*/}
+        {/* Right */}
         <View
           style={{
             position: "absolute",
-            backgroundColor: "green",
+            backgroundColor: "#C93D5D",
             width: "5%",
             height: "3%",
             // marginHorizontal: 250,
@@ -135,10 +125,11 @@ const RobotoModalDetails = ({ navigation }) => {
             }),
           }}
         ></View>
+        {/* Left */}
         <View
           style={{
             position: "absolute",
-            backgroundColor: "green", //C93D5D
+            backgroundColor: "#C93D5D", //C93D5D
             width: "5%",
             height: "3%",
             // left: 150,
@@ -147,7 +138,7 @@ const RobotoModalDetails = ({ navigation }) => {
             borderTopRightRadius: 25,
             // marginHorizontal: 5,
             marginHorizontal: Platform.select({
-              ios: -19,
+              ios: 132,
               android: 139.5,
             }),
           }}
